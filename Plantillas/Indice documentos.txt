@@ -1,0 +1,28 @@
+2 : AGuas
+2-3 : Aguas tipo 3
+2-3 : Aguas tipo 3 con fluoruros
+
+23 : Taladrinas
+
+BAÑOS
+-----
+6 : Baño Trat. Superficial.
+
+TRIGO
+-----
+10   : Trigo 3 página
+10-1 : Trigo pág. 1 (Granulometria)
+10-2 : Trigo pág. 2 (Determinaciones)
+10-3 : Trigo pág. 3 (Alveograma)
+10-4 : Trigo pág. 1, 2
+10-5 : Trigo pág. 1, 3
+10-6 : Trigo pág. 2, 3
+
+
+DETERMINACIONES
+---------------
+1.doc : Resto de muestras
+
+ALIMENTOS
+---------
+27.doc

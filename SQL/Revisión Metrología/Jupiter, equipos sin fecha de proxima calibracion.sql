@@ -1,0 +1,1 @@
+select * from equipos where cliente_id = 0 and con_calibracion = 1 and estado_id not in ('B','F/S','CAU','NRC') and isnull(fecha_prox_calibracion)

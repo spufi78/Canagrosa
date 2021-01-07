@@ -1,0 +1,626 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+  Persistable = 0  'NotPersistable
+  DataBindingBehavior = 0  'vbNone
+  DataSourceBehavior  = 0  'vbNone
+  MTSTransactionMode  = 0  'NotAnMTSObject
+END
+Attribute VB_Name = "clsSC_Paquetes"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+Option Explicit
+'***************************************************************
+'*   VARIABLES DE INSTANCIA DE LA CLASE CLSSC_PAQUETES
+'***************************************************************
+Private ID_PAQUETE As Long
+Private CODIGO_SC As String
+Private PRESUPUESTO As String
+Private OBSERVACIONES As String
+Private SUBCONTRATA_ID As Long
+Private fecha_creacion As String
+Private HORA_CREACION As String
+'M0959-I
+Private FACTURA_RECIBIDA As Integer
+'M0957-I
+'Private NFactura As Long
+Private NFactura As String
+'M0957-F
+Private ffactura As String
+'M0959-F
+
+Private USUARIO_ID As Long
+'M0957-I
+Private APROBADOR_ID As Long
+Private FECHA_APROBACION As String
+Private RECEPTOR_ID As Long
+Private FECHA_RECEPCION As String
+Private ESTADO As Long
+'M0957-F
+'M0957-I
+Private tipo As Long
+'M0957-F
+
+'***************************************************************
+'*   PROPIEDADES DE ESCRITURA DE LA CLASE CLSSC_PAQUETES
+'***************************************************************
+Public Property Let setID_PAQUETE(ByVal dato As Long)
+        ID_PAQUETE = dato
+End Property
+Public Property Let setCODIGO_SC(ByVal dato As String)
+        CODIGO_SC = dato
+End Property
+Public Property Let setPRESUPUESTO(ByVal dato As String)
+        PRESUPUESTO = dato
+End Property
+Public Property Let setOBSERVACIONES(ByVal dato As String)
+        OBSERVACIONES = dato
+End Property
+Public Property Let setSUBCONTRATA_ID(ByVal dato As Long)
+        SUBCONTRATA_ID = dato
+End Property
+Public Property Let setFECHA_CREACION(ByVal dato As String)
+        fecha_creacion = dato
+End Property
+Public Property Let setHORA_CREACION(ByVal dato As String)
+        HORA_CREACION = dato
+End Property
+Public Property Let setUSUARIO_ID(ByVal dato As Long)
+        USUARIO_ID = dato
+End Property
+'M0959-I
+Public Property Let setFACTURA_RECIBIDA(ByVal dato As Long)
+        FACTURA_RECIBIDA = dato
+End Property
+Public Property Let setNFACTURA(ByVal dato As String)
+        NFactura = dato
+End Property
+Public Property Let setFFACTURA(ByVal dato As String)
+        ffactura = dato
+End Property
+'M0959-F
+'M0957-I
+Public Property Let setAPROBADOR_ID(ByVal dato As Long)
+        APROBADOR_ID = dato
+End Property
+Public Property Let setFECHA_APROBACION(ByVal dato As Long)
+        FECHA_APROBACION = dato
+End Property
+Public Property Let setRECEPTOR_ID(ByVal dato As Long)
+        RECEPTOR_ID = dato
+End Property
+Public Property Let setFECHA_RECEPCION(ByVal dato As Long)
+        FECHA_RECEPCION = dato
+End Property
+Public Property Let setESTADO(ByVal dato As Long)
+        ESTADO = dato
+End Property
+'M0957-F
+'M0957-I
+Public Property Let setTIPO(ByVal dato As Long)
+        tipo = dato
+End Property
+'M0957-F
+'***************************************************************
+'*   PROPIEDADES DE LECTURA DE LA CLASE CLSSC_PAQUETES
+'***************************************************************
+Public Property Get getID_PAQUETE() As Long
+        getID_PAQUETE = ID_PAQUETE
+End Property
+Public Property Get getCODIGO_SC() As String
+        getCODIGO_SC = CODIGO_SC
+End Property
+Public Property Get getPRESUPUESTO() As String
+        getPRESUPUESTO = PRESUPUESTO
+End Property
+Public Property Get getOBSERVACIONES() As String
+        getOBSERVACIONES = OBSERVACIONES
+End Property
+Public Property Get getSUBCONTRATA_ID() As Long
+        getSUBCONTRATA_ID = SUBCONTRATA_ID
+End Property
+Public Property Get getFECHA_CREACION() As String
+        getFECHA_CREACION = fecha_creacion
+End Property
+Public Property Get getHORA_CREACION() As String
+        getHORA_CREACION = HORA_CREACION
+End Property
+Public Property Get getUSUARIO_ID() As Long
+        getUSUARIO_ID = USUARIO_ID
+End Property
+'M0959-I
+Public Property Get getFACTURA_RECIBIDA() As Long
+        getFACTURA_RECIBIDA = FACTURA_RECIBIDA
+End Property
+Public Property Get getNFACTURA() As String
+        getNFACTURA = NFactura
+End Property
+Public Property Get getFFACTURA() As String
+        getFFACTURA = ffactura
+End Property
+'M0959-F
+'M0957-I
+Public Property Get getAPROBADOR_ID() As Long
+        getAPROBADOR_ID = APROBADOR_ID
+End Property
+Public Property Get getFECHA_APROBACION() As String
+        getFECHA_APROBACION = FECHA_APROBACION
+End Property
+Public Property Get getRECEPTOR_ID() As Long
+        getRECEPTOR_ID = RECEPTOR_ID
+End Property
+Public Property Get getFECHA_RECEPCION() As String
+        getFECHA_RECEPCION = FECHA_RECEPCION
+End Property
+Public Property Get getESTADO() As Long
+        getESTADO = ESTADO
+End Property
+'M0957-F
+'M0957-I
+Public Property Get getTIPO() As Long
+        getTIPO = tipo
+End Property
+'M0957-F
+'***************************************************************
+'*   PROCEDIMIENTOS Y FUNCIONES DE LA CLASE CLSSC_PAQUETES
+'***************************************************************
+Public Function Carga(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim RS As ADODB.Recordset
+        Dim consulta As String
+        
+        consulta = "SELECT * FROM SC_PAQUETES WHERE ID_PAQUETE = " & ID
+        Set RS = datos_bd(consulta)
+        If RS.RecordCount = 0 Then
+                Carga = False
+        Else
+                ID_PAQUETE = RS("ID_PAQUETE")
+                CODIGO_SC = RS("CODIGO_SC")
+                PRESUPUESTO = RS("PRESUPUESTO")
+                OBSERVACIONES = RS("OBSERVACIONES")
+                SUBCONTRATA_ID = RS("SUBCONTRATA_ID")
+                fecha_creacion = Format(RS("FECHA_CREACION"), "yyyy-mm-dd")
+                HORA_CREACION = RS("HORA_CREACION")
+                USUARIO_ID = RS("USUARIO_ID")
+                'M0959-I
+                FACTURA_RECIBIDA = RS("FACTURA_RECIBIDA")
+                NFactura = RS("NFACTURA")
+                ffactura = Format(RS("FFACTURA"), "yyyy-mm-dd")
+                'M0959-F
+                'M0957-I
+                APROBADOR_ID = RS("APROBADOR_ID")
+                FECHA_APROBACION = Format(RS("FECHA_APROBACION"), "yyyy-mm-dd")
+                RECEPTOR_ID = RS("RECEPTOR_ID")
+                FECHA_RECEPCION = Format(RS("FECHA_RECEPCION"), "yyyy-mm-dd")
+                ESTADO = RS("ESTADO")
+                'M0957-F
+                'M0957-I
+                tipo = RS("TIPO")
+                'M0957-F
+                
+                Carga = True
+        End If
+        Set RS = Nothing
+        Exit Function
+fallo:
+        Carga = False
+        MsgBox "Error al cargar los datos(clsSC_Paquetes)", vbCritical, Err.Description
+End Function
+
+Public Function CrearId()
+        Dim RS As ADODB.Recordset
+        Dim consulta As String
+        
+        consulta = "SELECT MAX(ID_PAQUETE) FROM SC_PAQUETES"
+        Set RS = datos_bd(consulta)
+        If IsNull(RS.Fields(0)) Or (RS.EOF And RS.BOF) Then
+                ID_PAQUETE = 1
+        Else
+                ID_PAQUETE = RS.Fields(0) + 1
+        End If
+        Set RS = Nothing
+End Function
+
+Public Function CrearCodigoSC() As String
+    Dim oParametro As New clsParametros
+    If oParametro.Carga(parametros.CODIGOSC_PAQUETES, "") Then
+        If Right(oParametro.getVALOR, 2) = Right(Year(Date), 2) Then ' Si es el mismo año
+            oParametro.setVALOR = (Format(CLng(Left(oParametro.getVALOR, 4)) + 1, "0000")) & "/" & Right(oParametro.getVALOR, 2)
+        Else ' si cambia de año se reinicia la cuenta
+            oParametro.setVALOR = Format(CLng(1), "0000") & "/" & Right(Year(Date), 2)
+        End If
+    Else
+        oParametro.setVALOR = Format(CLng(1), "0000") & "/" & Right(Year(Date), 2)
+    End If
+    oParametro.actualizar_valor parametros.CODIGOSC_PAQUETES, ""
+    CODIGO_SC = oParametro.getVALOR
+    
+End Function
+
+Public Function Insertar() As Long
+        On Error GoTo fallo
+        Dim consulta As String
+        If ID_PAQUETE = 0 Then
+            Me.CrearId
+            Me.CrearCodigoSC
+        End If
+        
+        consulta = "INSERT INTO SC_PAQUETES (" & _
+                    "      ID_PAQUETE, CODIGO_SC, PRESUPUESTO " & _
+                    "    , OBSERVACIONES, SUBCONTRATA_ID " & _
+                    "    , FECHA_CREACION, HORA_CREACION, USUARIO_ID " & _
+                    "    , FACTURA_RECIBIDA, NFACTURA, FFACTURA, TIPO" & _
+                    "    , CUSERID, FTIMESTP " & _
+                    ") VALUES (" & _
+                           ID_PAQUETE & "," & "'" & CODIGO_SC & "'" & ", " & _
+                           "'" & PRESUPUESTO & "'," & "'" & OBSERVACIONES & "'" & ", " & _
+                           SUBCONTRATA_ID & "," & "'" & Format(fecha_creacion, "yyyy-mm-dd") & "'" & ", " & "'" & HORA_CREACION & "'" & ", " & _
+                           USUARIO_ID & ", " & FACTURA_RECIBIDA & ", '" & NFactura & "'," & "'" & ffactura & "'," & tipo & "," & _
+                           "'" & USUARIO.getUSUARIO & "'" & ", CURRENT_TIMESTAMP)"
+        
+        execute_bd consulta
+        Insertar = ID_PAQUETE
+        Exit Function
+        
+fallo:
+        Insertar = 0
+        MsgBox "Error al insertar (clsSC_Paquetes)", vbCritical, Err.Description
+End Function
+
+Public Function Modificar(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim consulta As String
+        
+        consulta = "UPDATE SC_PAQUETES SET " & _
+                   "       PRESUPUESTO = '" & PRESUPUESTO & "'" & _
+                   "     , SUBCONTRATA_ID = " & SUBCONTRATA_ID & _
+                   "     , OBSERVACIONES = '" & OBSERVACIONES & "'" & _
+                   "     , CUSERID = '" & USUARIO.getUSUARIO & "'" & _
+                   "     , NFACTURA = '" & NFactura & "'" & _
+                   "     , FFACTURA = '" & ffactura & "'" & _
+                   "     , FACTURA_RECIBIDA = " & FACTURA_RECIBIDA & _
+                   "     , FTIMESTP = CURRENT_TIMESTAMP " & _
+                   " WHERE ID_PAQUETE = " & ID
+        
+        execute_bd consulta
+        Modificar = True
+        Exit Function
+fallo:
+        Modificar = False
+        MsgBox "Error al Modificar (clsSC_Paquetes)", vbCritical, Err.Description
+End Function
+
+'M0957-I
+Public Function Tramitar(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim consulta As String
+        
+        consulta = "UPDATE SC_PAQUETES SET " & _
+                   "       ESTADO = 1" & _
+                   "     , APROBADOR_ID = " & USUARIO.getID_EMPLEADO & _
+                   "     , FECHA_APROBACION = '" & Format(Date, "yyyy-mm-dd") & "'" & _
+                   "     , FTIMESTP = CURRENT_TIMESTAMP " & _
+                   " WHERE ID_PAQUETE = " & ID
+        
+        execute_bd consulta
+        Tramitar = True
+        Exit Function
+fallo:
+        Tramitar = False
+        MsgBox "Error al Tramitar (clsSC_Paquetes)", vbCritical, Err.Description
+End Function
+'M0957-F
+'M1147-I
+Public Function Finalizar(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim consulta As String
+        
+        consulta = "UPDATE SC_PAQUETES SET " & _
+                   "       ESTADO = 2" & _
+                   "     , RECEPTOR_ID = " & USUARIO.getID_EMPLEADO & _
+                   "     , FECHA_RECEPCION = '" & Format(Date, "yyyy-mm-dd") & "'" & _
+                   "     , FTIMESTP = CURRENT_TIMESTAMP " & _
+                   " WHERE ID_PAQUETE = " & ID
+        
+        execute_bd consulta
+        Finalizar = True
+        Exit Function
+fallo:
+        Finalizar = False
+        MsgBox "Error al Finalizar (clsSC_Paquetes)", vbCritical, Err.Description
+End Function
+'M1147-F
+Public Function Eliminar(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim consulta As String
+        
+        ' se vuelven a poner las determinaciones como sin enviar
+        execute_bd "UPDATE DETERMINACIONES D, SC_PAQUETES_DETALLE SCPD " & _
+                   "   SET ENVIADO_PAQUETE = 0 " & _
+                   " WHERE D.ID_DETERMINACION = SCPD.DETERMINACION_ID " & _
+                   "   AND SCPD.PAQUETE_ID = " & ID
+        
+        ' se quitan las determinaciones del detalle del paquete
+        execute_bd "DELETE FROM SC_PAQUETES_DETALLE WHERE PAQUETE_ID = " & ID
+        
+        ' se quitan los conceptos del detalle del paquete
+        execute_bd "DELETE FROM SC_PAQUETES_DETALLE_GENERICO WHERE PAQUETE_ID = " & ID
+        
+        ' se elimina el paquete
+        execute_bd "DELETE FROM SC_PAQUETES WHERE ID_PAQUETE = " & ID
+        Eliminar = True
+        Exit Function
+        
+fallo:
+        Eliminar = False
+        MsgBox "Error al Eliminar (clsSC_Paquetes)", vbCritical, Err.Description
+End Function
+'M1147-I
+'Public Function EliminarGenerico(ID As Long) As Boolean
+'        On Error GoTo fallo
+'        Dim consulta As String
+'
+'        ' se quitan los conceptos del detalle del paquete
+'        execute_bd "DELETE FROM SC_PAQUETES_DETALLE_GENERICO WHERE PAQUETE_ID = " & ID
+'
+'        ' se elimina el paquete
+'        execute_bd "DELETE FROM SC_PAQUETES WHERE ID_PAQUETE = " & ID
+'        EliminarGenerico = True
+'        Exit Function
+'
+'fallo:
+'        EliminarGenerico = False
+'        MsgBox "Error al EliminarGenerico (clsSC_Paquetes)", vbCritical, Err.Description
+'End Function
+'M1147-F
+
+Public Function Listado_completo() As ADODB.Recordset
+        Dim consulta As String
+        
+        consulta = "SELECT P.CODIGO_SC, CN.NOMBRE CONTRATA " & _
+                   "     , P.FECHA_CREACION, P.HORA_CREACION, U.NOMBRE USUARIO " & _
+                   "     , P.ID_PAQUETE " & _
+                   "     , P.FACTURA_RECIBIDA " & _
+                   "     , P.NFACTURA " & _
+                   "     , P.FFACTURA " & _
+                   "  FROM SC_PAQUETES P, CLIENTES CN, USUARIOS U " & _
+                   " WHERE P.SUBCONTRATA_ID = CN.ID_CLIENTE " & _
+                   "   AND P.USUARIO_ID = U.ID_EMPLEADO " & _
+                   " ORDER BY P.CODIGO_SC DESC "
+        Set Listado_completo = datos_bd(consulta)
+        
+End Function
+
+Public Function Listado(strCodigoSC As String, strUsuario As String, strContrata As String, strFechaDesde As String, strFechaHasta As String, facturaRecibida As String, ffactura As String, ffacturaf As String, NFactura As String, ESTADO As Long) As ADODB.Recordset
+    
+    Dim consulta As String
+    Dim strFactura As String
+    Dim facturai As Long
+    Dim facturaf As Long
+    'M0957-I
+    Dim strTramitado As String
+    'M0957-F
+    'M0957-I
+    'Dim NumFactu As Long
+    'NumFactu = 0
+    'If (NFactura <> "" And NFactura <> " ") Then
+    '    NumFactu = CLng(NFactura)
+    'End If
+    NFactura = Trim(NFactura)
+    'M0957-F
+    If (facturaRecibida <> 0) Then
+        strFactura = " AND FACTURA_RECIBIDA = " & facturaRecibida
+        'M0957-I
+        'If (NumFactu = 0) Then
+        '    If (ffactura <> "") Then
+        '        strFactura = strFactura + " AND FFACTURA>='" & ffactura & "' AND FFACTURA <='" & ffacturaf & "'"
+        '
+        '        strFactura = strFactura & " AND (NFACTURA >= 0 AND NFACTURA <= 999999)"
+        '
+        '    End If
+        'Else
+        '
+        '    strFactura = strFactura & " AND NFACTURA = " & NumFactu
+        '
+        '
+        'End If
+        'M0957-F
+        If ffactura <> "" Then
+            strFactura = strFactura + " AND FFACTURA>='" & ffactura & "' AND FFACTURA <='" & ffacturaf & "'"
+        End If
+        strFactura = strFactura & " AND NFACTURA LIKE '%" & NFactura & "%'"
+    End If
+    'M0957-I
+    If ESTADO = 3 Then
+       strTramitado = " AND P.ESTADO In (0,1,2)"
+    Else
+       strTramitado = " AND P.ESTADO = " & ESTADO
+    End If
+    'M0957-F
+    'JGM-I
+    Dim filtro As String
+    If Trim(strCodigoSC) <> "" Then
+        filtro = filtro & " AND P.CODIGO_SC LIKE '%" & strCodigoSC & "%' "
+    End If
+    If Trim(strUsuario) <> "" Then
+        filtro = filtro & " AND U.NOMBRE LIKE '%" & strUsuario & "%' "
+    End If
+    If Trim(strContrata) <> "" Then
+        filtro = filtro & " AND PR.NOMBRE = '" & strContrata & "' "
+    End If
+    'JGM-F
+    strFactura = strFactura & " AND NFACTURA LIKE '%" & NFactura & "' "
+    consulta = "SELECT P.CODIGO_SC, PR.NOMBRE CONTRATA, P.PRESUPUESTO " & _
+                   "     , P.FECHA_CREACION, U.NOMBRE USUARIO " & _
+                   "     , P.ID_PAQUETE, PR.ID_PROVEEDOR, P.ESTADO, P.FECHA_APROBACION, AP.NOMBRE USUARIO, P.TIPO " & _
+                   "  FROM SC_PAQUETES P, PROVEEDORES PR, USUARIOS U, USUARIOS AP " & _
+                   " WHERE P.SUBCONTRATA_ID = PR.ID_PROVEEDOR " & _
+                   "   AND P.USUARIO_ID = U.ID_EMPLEADO " & _
+                   "   AND P.APROBADOR_ID = AP.ID_EMPLEADO " & _
+                   "   AND P.FECHA_CREACION >= '" & strFechaDesde & "' " & _
+                   "   AND P.FECHA_CREACION <= '" & strFechaHasta & "' " & _
+                   filtro & _
+                   strFactura & _
+                   strTramitado & _
+                   " ORDER BY P.ID_PAQUETE DESC "
+    
+    Set Listado = datos_bd(consulta)
+End Function
+
+Public Function Listado_Combo() As ADODB.Recordset
+        Dim consulta As String
+        
+        consulta = "SELECT ID_PAQUETE, CODIGO_SC FROM SC_PAQUETES ORDER BY NOMBRE"
+        Set Listado_Combo = datos_bd(consulta)
+        
+End Function
+
+Public Function imprimir(PAQUETE As Long) As Boolean
+        With frmReport
+            .iniciar
+            .informe = "rptSC_Paquete"
+            .criterio = "{SC_PAQUETES.ID_PAQUETE}=" & PAQUETE
+            .imprimir = False
+            .generar
+            .Show 1
+        End With
+        Unload frmReport
+End Function
+
+Public Function existe_paquete(lngContrata As Long, fecha As String, hora As String) As Long
+    Dim RS As New ADODB.Recordset
+    Dim consulta As String
+    
+    consulta = "SELECT ID_PAQUETE " & _
+               "  FROM SC_PAQUETES " & _
+               " WHERE SUBCONTRATA_ID = " & lngContrata & _
+               "   AND FECHA_CREACION = '" & fecha & "'" & _
+               "   AND HORA_CREACION = '" & hora & "'" & _
+               "   AND TIPO = " & SC_TIPO_DETERMINACION
+    Set RS = datos_bd(consulta)
+    If Not (IsNull(RS.Fields("ID_PAQUETE")) Or (RS.EOF And RS.BOF)) Then  'si es nulo No se recupero ninguno
+        existe_paquete = RS.Fields("ID_PAQUETE")
+    Else
+        existe_paquete = 0
+    End If
+    Set RS = Nothing
+
+End Function
+
+'M0957-I
+Public Function existe_paquete_CE(lngContrata As Long, fecha As String, hora As String) As Long
+    Dim RS As New ADODB.Recordset
+    Dim consulta As String
+    
+    consulta = "SELECT ID_PAQUETE " & _
+               "  FROM SC_PAQUETES " & _
+               " WHERE SUBCONTRATA_ID = " & lngContrata & _
+               "   AND FECHA_CREACION = '" & fecha & "'" & _
+               "   AND HORA_CREACION = '" & hora & "'" & _
+               "   AND TIPO = " & SC_TIPO_ENSAYO_EFICACIA
+                
+    Set RS = datos_bd(consulta)
+    If Not (IsNull(RS.Fields("ID_PAQUETE")) Or (RS.EOF And RS.BOF)) Then  'si es nulo No se recupero ninguno
+        existe_paquete_CE = RS.Fields("ID_PAQUETE")
+    Else
+        existe_paquete_CE = 0
+    End If
+    Set RS = Nothing
+
+End Function
+'M0957-F
+
+'M1147-I
+Public Function existe_paquete_generico(lngContrata As Long, fecha As String, hora As String) As Long
+    Dim RS As New ADODB.Recordset
+    Dim consulta As String
+    
+    consulta = "SELECT ID_PAQUETE " & _
+               "  FROM SC_PAQUETES " & _
+               " WHERE SUBCONTRATA_ID = " & lngContrata & _
+               "   AND FECHA_CREACION = '" & fecha & "'" & _
+               "   AND HORA_CREACION = '" & hora & "'" & _
+               "   AND TIPO = " & SC_TIPO_GENERICA
+                
+    Set RS = datos_bd(consulta)
+    If Not (IsNull(RS.Fields("ID_PAQUETE")) Or (RS.EOF And RS.BOF)) Then  'si es nulo No se recupero ninguno
+        existe_paquete_generico = RS.Fields("ID_PAQUETE")
+    Else
+        existe_paquete_generico = 0
+    End If
+    Set RS = Nothing
+
+End Function
+'M1147-F
+Public Function Listado_muestras_determinaciones(ID_P As String) As ADODB.Recordset
+    On Error GoTo fallo
+    
+    Dim consulta As String
+    
+    consulta = "SELECT CONCAT(TM.CODIGO, '-', CAST(M.ID_PARTICULAR AS CHAR)) CODIGO " & _
+               "     , M.REFERENCIA_CLIENTE, TD.NOMBRE DETERMINACION " & _
+               "     , PD.VALOR_REFERENCIA, PD.NORMATIVA_APLICABLE,D.ID_DETERMINACION, PD.PRECIO " & _
+               "     , M.ID_MUESTRA, TD.ID_TIPO_DETERMINACION ID_TD, D.ID_DETERMINACION " & _
+               "  FROM SC_PAQUETES P, SC_PAQUETES_DETALLE PD " & _
+               "     , MUESTRAS M, TIPOS_MUESTRA TM " & _
+               "     , DETERMINACIONES D, TIPOS_DETERMINACION TD " & _
+               " WHERE P.ID_PAQUETE = PD.PAQUETE_ID " & _
+               "   AND PD.DETERMINACION_ID = D.ID_DETERMINACION " & _
+               "   AND M.ID_MUESTRA = D.MUESTRA_ID " & _
+               "   AND D.TIPO_DETERMINACION_ID = TD.ID_TIPO_DETERMINACION " & _
+               "   AND M.TIPO_MUESTRA_ID = TM.ID_TIPO_MUESTRA " & _
+               "   AND P.ID_PAQUETE = " & ID_P & _
+               " ORDER BY CODIGO "
+    
+    Set Listado_muestras_determinaciones = datos_bd(consulta)
+    Exit Function
+fallo:
+    MsgBox Err.Description, vbCritical, Err.Number
+End Function
+
+'M0957-I
+Public Function Listado_muestras_ensayos(ID_P As String) As ADODB.Recordset
+    On Error GoTo fallo
+    
+    Dim consulta As String
+    
+    consulta = "SELECT CONCAT(TM.CODIGO, '-', CAST(M.ID_PARTICULAR AS CHAR)) CODIGO " & _
+               "     , M.REFERENCIA_CLIENTE, TE.NOMBRE " & _
+               "     , PD.VALOR_REFERENCIA, PD.NORMATIVA_APLICABLE, M.ID_MUESTRA, pd.TIPO_ENSAYO_ID ID_TE, PD.PRECIO " & _
+               "  FROM SC_PAQUETES P, SC_PAQUETES_DETALLE PD " & _
+               "     , MUESTRAS M, TIPOS_MUESTRA TM " & _
+               "     , CE_TIPOS_ENSAYOS TE " & _
+               " WHERE P.ID_PAQUETE = PD.PAQUETE_ID " & _
+               "   AND PD.MUESTRA_ID = M.ID_MUESTRA " & _
+               "   AND M.TIPO_MUESTRA_ID = TM.ID_TIPO_MUESTRA " & _
+               "   AND PD.TIPO_ENSAYO_ID = TE.ID_TIPO_ENSAYO " & _
+               "   AND P.ID_PAQUETE = " & ID_P & _
+               " ORDER BY CODIGO "
+    
+    Set Listado_muestras_ensayos = datos_bd(consulta)
+    Exit Function
+fallo:
+    MsgBox Err.Description, vbCritical, Err.Number
+End Function
+'M0957-F
+'M1147-I
+Public Function Listado_conceptos(ID_P As String) As ADODB.Recordset
+    On Error GoTo fallo
+    
+    Dim consulta As String
+    
+    consulta = "SELECT P.ID_PAQUETE, P.CODIGO_SC " & _
+               "     , PD.CONCEPTO_ID, PD.DESCRIPCION, PD.REF_CLIENTE, PD.PRECIO " & _
+               "  FROM SC_PAQUETES P, SC_PAQUETES_DETALLE_GENERICO PD " & _
+               " WHERE P.ID_PAQUETE = PD.PAQUETE_ID " & _
+               "   AND P.ID_PAQUETE = " & ID_P & _
+               " ORDER BY P.CODIGO_SC "
+    
+    Set Listado_conceptos = datos_bd(consulta)
+    Exit Function
+fallo:
+    MsgBox Err.Description, vbCritical, Err.Number
+End Function
+'M1147-F

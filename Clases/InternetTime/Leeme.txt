@@ -1,0 +1,42 @@
+Clase cInternetTime para obtener la fecha y la hora desde internet
+Programada por José Rubí
+
+Esta clase sirve para obtener mediante internet la fecha y hora exactas.
+Además permite actualizar la fecha del sistema con la obtenida desde interner o cualquier
+otra que queramos.
+
+Propiedades :
+- CodigoError : Devuelve el código de error. Desde que se lanza la petición a internet hasta
+		que llega la respuesta vale -1 y sirve para controlar la ejecución de la
+		petición.
+- Fecha : 	Devuelve como un string la parte de la fecha obtenida de internet o de la
+		propiedad FechaYHora
+- FechayHora : 	Devuelve como un date la información obtenida de internet. Es la información
+		que se utiliza para actualizar la fecha del sistema.
+		Se puede informar manualmente si no se quiere buscar información en
+		internet
+- Hora : 	Devuelve como un string la hora obtenida de internet o de la propiedad
+		FechayHora
+- HorarioVerano : Devuelve en un boolean si el sistema está en horario de verano
+- TextoError:	Devuelve la descripción del error. Si no ha habido error devuelve el mensaje
+		recibido desde internet con la fecha y la hora
+
+Métodos :
+- ActualizarFechaSistema : Modifica la fecha y hora del sistema con el valor de la propiedad
+		FechayHora
+- ObtenerFechayHora: Se conecta a un time-server en internet mediante el control winsock
+		que se le pasa como parámetro y actualiza las propiedades Fecha, Hora y
+		Fechayora con la información recibida
+
+Ejemplo :
+
+Dim cIT As cInternetTime
+
+Set cIT = New cInternetTime
+cIT.ObtenerFechayHora wsck
+'esperamos a recibir la respuesta
+Do While cIT.CodigoError = -1
+    DoEvents
+Loop
+cIT.ActualizarFechaSistema
+Set cIT = Nothing

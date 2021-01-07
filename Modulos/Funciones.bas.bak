@@ -1,0 +1,1216 @@
+Attribute VB_Name = "Funciones"
+Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal hWndNewParent As Long) As Long
+Private Declare Function GetTempPath Lib "kernel32" Alias "GetTempPathA" (ByVal nBufferLength As Long, ByVal lpBuffer As String) As Long
+Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" _
+        (ByVal Hwnd As Long, ByVal lpOperation As String, _
+        ByVal lpFile As String, ByVal lpParameters As String, _
+        ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+
+Private Declare Function GetProfileString Lib "kernel32" Alias "GetProfileStringA" ( _
+    ByVal lpAppName As String, _
+    ByVal lpKeyName As String, _
+    ByVal lpDefault As String, _
+    ByVal lpReturnedString As String, _
+    ByVal nSize As Long) As Long
+Public Function lista_colorear(lista As ListView, fila As Integer, color As Long) As Boolean
+    Dim i As Integer
+    lista.ListItems(fila).ForeColor = color
+    For i = 1 To lista.ColumnHeaders.Count - 1
+        lista.ListItems(fila).ListSubItems(i).ForeColor = color
+    Next
+End Function
+
+Public Function recuperaIVA() As Integer
+    Dim oParametros As New clsParametros
+    If oParametros.Carga(parametros.IVA, "") Then
+        recuperaIVA = CInt(oParametros.getVALOR)
+    Else
+        recuperaIVA = 0
+    End If
+    Set oParametros = Nothing
+End Function
+'M1051-I
+'Public Function CadenasIguales(ByVal cad1 As String, ByVal cad2 As String, Optional CaseInsensitive As Boolean = True, Optional OmitirAcentos As Boolean = True, Optional OmitirCaracteresExtras As Boolean = True)
+'
+'final1 = cad1
+'final2 = cad2
+'
+'If CaseInsensitive Then
+'    final1 = LCase(final1)
+'    final2 = LCase(final2)
+'End If
+'
+'If OmitirAcentos Then
+'    final1 = Replace(final1, "á", "a")
+'    final1 = Replace(final1, "Á", "A")
+'    final1 = Replace(final1, "é", "e")
+'    final1 = Replace(final1, "É", "E")
+'    final1 = Replace(final1, "í", "i")
+'    final1 = Replace(final1, "Í", "I")
+'    final1 = Replace(final1, "ó", "o")
+'    final1 = Replace(final1, "Ó", "O")
+'    final1 = Replace(final1, "ú", "u")
+'    final1 = Replace(final1, "Ú", "U")
+'
+'    final2 = Replace(final2, "á", "a")
+'    final2 = Replace(final2, "Á", "A")
+'    final2 = Replace(final2, "é", "e")
+'    final2 = Replace(final2, "É", "E")
+'    final2 = Replace(final2, "í", "i")
+'    final2 = Replace(final2, "Í", "I")
+'    final2 = Replace(final2, "ó", "o")
+'    final2 = Replace(final2, "Ó", "O")
+'    final2 = Replace(final2, "ú", "u")
+'    final2 = Replace(final2, "Ú", "U")
+'
+'End If
+'
+'
+'If OmitirCaracteresExtras Then
+'    final1 = Replace(final1, "ä", "a")
+'    final1 = Replace(final1, "Ä", "A")
+'    final1 = Replace(final1, "ë", "e")
+'    final1 = Replace(final1, "Ë", "E")
+'    final1 = Replace(final1, "ï", "i")
+'    final1 = Replace(final1, "Ï", "I")
+'    final1 = Replace(final1, "ö", "o")
+'    final1 = Replace(final1, "Ö", "O")
+'    final1 = Replace(final1, "ü", "u")
+'    final1 = Replace(final1, "Ü", "U")
+'    final1 = Replace(final1, "â", "a")
+'    final1 = Replace(final1, "ê", "e")
+'    final1 = Replace(final1, "î", "i")
+'    final1 = Replace(final1, "ô", "o")
+'    final1 = Replace(final1, "û", "u")
+'    final1 = Replace(final1, "Â", "A")
+'    final1 = Replace(final1, "Ê", "E")
+'    final1 = Replace(final1, "Î", "I")
+'    final1 = Replace(final1, "Ô", "O")
+'    final1 = Replace(final1, "Û", "U")
+'    final1 = Replace(final1, "à", "a")
+'    final1 = Replace(final1, "è", "e")
+'    final1 = Replace(final1, "ì", "i")
+'    final1 = Replace(final1, "ò", "o")
+'    final1 = Replace(final1, "ù", "u")
+'    final1 = Replace(final1, "À", "A")
+'    final1 = Replace(final1, "È", "E")
+'    final1 = Replace(final1, "Ì", "I")
+'    final1 = Replace(final1, "Ò", "O")
+'    final1 = Replace(final1, "Ù", "U")
+'
+'    final2 = Replace(final2, "ä", "a")
+'    final2 = Replace(final2, "Ä", "A")
+'    final2 = Replace(final2, "ë", "e")
+'    final2 = Replace(final2, "Ë", "E")
+'    final2 = Replace(final2, "ï", "i")
+'    final2 = Replace(final2, "Ï", "I")
+'    final2 = Replace(final2, "ö", "o")
+'    final2 = Replace(final2, "Ö", "O")
+'    final2 = Replace(final2, "ü", "u")
+'    final2 = Replace(final2, "Ü", "U")
+'    final2 = Replace(final2, "â", "a")
+'    final2 = Replace(final2, "ê", "e")
+'    final2 = Replace(final2, "î", "i")
+'    final2 = Replace(final2, "ô", "o")
+'    final2 = Replace(final2, "û", "u")
+'    final2 = Replace(final2, "Â", "A")
+'    final2 = Replace(final2, "Ê", "E")
+'    final2 = Replace(final2, "Î", "I")
+'    final2 = Replace(final2, "Ô", "O")
+'    final2 = Replace(final2, "Û", "U")
+'    final2 = Replace(final2, "à", "a")
+'    final2 = Replace(final2, "è", "e")
+'    final2 = Replace(final2, "ì", "i")
+'    final2 = Replace(final2, "ò", "o")
+'    final2 = Replace(final2, "ù", "u")
+'    final2 = Replace(final2, "À", "A")
+'    final2 = Replace(final2, "È", "E")
+'    final2 = Replace(final2, "Ì", "I")
+'    final2 = Replace(final2, "Ò", "O")
+'    final2 = Replace(final2, "Ù", "U")
+'End If
+'
+'CadenasIguales = (fina1 = final2)
+'
+'End Function
+'M1051-F
+
+'M1051-I
+'Public Function FiltradoGenerico(ByVal prmConsulta As String, ByVal prmCampo_id As String, ByVal prmCampo_Texto As String, ByVal prmCampo_Filtro As String, Optional ByVal prmFiltro As String = "", Optional ByRef prmSelectedText As String = "") As Long
+'Dim objfrm As New frmListadoGenerico, res As String
+'FiltradoGenerico = 0
+'
+'On Error GoTo FiltradoGenerico_Error
+'
+'    objfrm.consulta = prmConsulta
+'    objfrm.CampoFiltro = prmCampo_Filtro
+'    objfrm.CampoId = prmCampo_id
+'    objfrm.CampoTexto = prmCampo_Texto
+'    objfrm.filtro = prmFiltro
+'
+'    objfrm.Show vbModal
+'
+'    prmSelectedText = objfrm.SelectedText
+'    FiltradoGenerico = objfrm.Select_Id
+'
+'    Unload objfrm
+'    Set objfrm = Nothing
+'
+'On Error GoTo 0
+'    Exit Function
+'FiltradoGenerico_Error:
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure FiltradoGenerico of Módulo Funciones"
+'    Unload objfrm
+'    Set objfrm = Nothing
+'
+'End Function
+'M1051-F
+
+Public Function formatear(s As String, ENTEROS As Integer, DECIMALES As Integer) As String
+    Dim aux As String
+    Dim i As Integer
+    For i = 1 To ENTEROS - 1
+        aux = aux & "#"
+    Next
+    If DECIMALES > 0 Then
+        aux = aux & "0."
+    Else
+        aux = aux & "0"
+    End If
+    For i = 1 To DECIMALES
+        aux = aux & "0"
+    Next
+    formatear = Trim(Format(s, aux))
+End Function
+
+Public Function fecha_bd(ByVal fecha As String) As String
+If Trim(fecha) = "" Then fecha = "0000-00-00"
+fecha = Format(fecha, "yyyy-mm-dd")
+
+fecha_bd = fecha
+
+End Function
+
+Sub Espera(Segundos As Single)
+  Dim ComienzoSeg As Single
+  Dim FinSeg As Single
+  ComienzoSeg = Timer
+  FinSeg = ComienzoSeg + Segundos
+  Do While FinSeg > Timer
+      DoEvents
+      If ComienzoSeg > Timer Then
+          FinSeg = FinSeg - 24 * 60 * 60
+      End If
+  Loop
+End Sub
+Function MD5(cadena As String) As String
+    Dim RS As ADODB.Recordset
+    Set RS = datos_bd("SELECT MD5(" & cadena & ")", True)
+    If RS.RecordCount > 0 Then
+        MD5 = RS(0)
+    Else
+        MD5 = ""
+    End If
+End Function
+Function Encripta(Strg$, PassWord$)
+   Dim b$, s$, i As Long, j As Long
+   Dim A1 As Long, A2 As Long, A3 As Long, p$
+   j = 1
+   For i = 1 To Len(PassWord$)
+     p$ = p$ & Asc(Mid$(PassWord$, i, 1))
+   Next
+    
+   For i = 1 To Len(Strg$)
+     A1 = Asc(Mid$(p$, j, 1))
+     j = j + 1: If j > Len(p$) Then j = 1
+     A2 = Asc(Mid$(Strg$, i, 1))
+     A3 = A1 Xor A2
+     b$ = Hex$(A3)
+     If Len(b$) < 2 Then b$ = "0" + b$
+     s$ = s$ + b$
+   Next
+   Encripta = s$
+End Function
+Function Desencripta(Strg$, PassWord$)
+   Dim b$, s$, i As Long, j As Long
+   Dim A1 As Long, A2 As Long, A3 As Long, p$
+   j = 1
+   For i = 1 To Len(PassWord$)
+     p$ = p$ & Asc(Mid$(PassWord$, i, 1))
+   Next
+   
+   For i = 1 To Len(Strg$) Step 2
+     A1 = Asc(Mid$(p$, j, 1))
+     j = j + 1: If j > Len(p$) Then j = 1
+     b$ = Mid$(Strg$, i, 2)
+     A3 = val("&H" + b$)
+     A2 = A1 Xor A3
+     s$ = s$ + Chr$(A2)
+   Next
+   Desencripta = s$
+End Function
+Public Sub cargar_combo(combo As DataCombo, oB As Object)
+    Dim RS As ADODB.Recordset
+    Set RS = oB.Listado_Combo
+    Set combo.RowSource = RS
+    combo.ListField = RS(1).Name
+    combo.BoundColumn = RS(0).Name
+    Set RS = Nothing
+End Sub
+
+Public Sub Cargar_ComboBox(combo As ComboBox, oB As Object)
+    
+    Dim RS As ADODB.Recordset
+    Set RS = oB.Listado_Combo
+        
+    combo.Clear
+    
+    RS.MoveFirst
+    While Not RS.EOF
+        combo.AddItem RS(1).value
+        combo.ItemData(combo.ListCount - 1) = RS(0).value
+        RS.MoveNext
+    Wend
+    
+End Sub
+
+
+Public Function localizar_directorio_escaneo_equipo()
+
+    Dim uso As String
+    Dim oParam As New clsParametros
+
+    ' Por defecto, lo que dice en el config
+    localizar_directorio_escaneo_equipo = ReadINI(App.Path & "\config.ini", "Documentos", "Escaner")
+    
+    uso = USUARIO.getUSO
+    
+    Set oParam = New clsParametros
+    
+    oParam.Carga parametros.ESCANER_USO_LOCAL_RUTA_CARPETA, uso
+    
+    If Trim(oParam.getVALOR) <> "" Then
+        localizar_directorio_escaneo_equipo = Replace(oParam.getVALOR, "/", "\")
+    End If
+    
+    Set oParam = Nothing
+    
+    
+End Function
+
+Public Sub log(datos As String)
+    On Error Resume Next
+    If USUARIO.getUSUARIO <> "" Then
+        MkDir ReadINI(App.Path + "\config.ini", "documentos", "ruta") & "\log\" & Year(Date)
+        MkDir ReadINI(App.Path + "\config.ini", "documentos", "ruta") & "\log\" & Year(Date) & "\" & Format(Date, "mmmm")
+        On Error GoTo fallo
+        Open ReadINI(App.Path + "\config.ini", "documentos", "ruta") & "\log\" & Year(Date) & "\" & Format(Date, "mmmm") & "\" & Format(Date, "yyyy-mm-dd") & " " & UCase(USUARIO.getUSUARIO) & ".txt" For Append As #1
+        If Left(datos, 3) = "frm" Then
+            Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & String(75, "-")
+            Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & datos
+            Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & String(75, "-")
+        Else
+            If Left(datos, 13) = "Desc.Error : " Then
+                Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & String(80, "*")
+                Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & datos
+                Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & String(80, "*")
+            Else
+                Print #1, Format(Date, "dd/mm/yyyy") & ";" & Format(Time, "hh:mm:ss") & ";" & USUARIO.getUSO & ";" & datos
+            End If
+        End If
+    End If
+    Close #1
+    Exit Sub
+fallo:
+    Close
+    Exit Sub
+End Sub
+Public Sub error_grave(datos As String)
+    Dim cadena As String
+    cadena = "Desc.Error : " & datos
+    cadena = cadena & vbNewLine & "Usuario : " & USUARIO.getUSUARIO
+    cadena = cadena & vbNewLine & "Puesto : " & USUARIO.getUSO
+    cadena = cadena & vbNewLine & "Fecha/Hora : " & Now
+    Call Enviar_Mail_CDO("informatica@canagrosa.com", "[ERROR-GESLAB]", cadena, vbNullString)
+    log (cadena)
+    MsgBox cadena, vbCritical, App.Title
+End Sub
+Public Sub error_grave_jgm(datos As String)
+    Dim cadena As String
+    cadena = "Desc.Error : " & datos
+    cadena = cadena & vbNewLine & "Usuario : " & USUARIO.getUSUARIO
+    cadena = cadena & vbNewLine & "Puesto : " & USUARIO.getUSO
+    cadena = cadena & vbNewLine & "Fecha/Hora : " & Now
+    ' Generar captura de pantalla para envio por correo
+    Dim Capture As CaptureWindow
+    Dim Conversor As Class1
+    Set Capture = New CaptureWindow
+    Set Conversor = New Class1
+    Conversor.GrabarJpg Capture.CapturarPantalla(), App.Path & "\captura.jpg", CByte(70)
+    
+    Set captura = Nothing
+    Set Conversor = Nothing
+    Call Enviar_Mail_CDO("informatica@canagrosa.com", "[ERROR-GESLAB]", cadena, App.Path & "\captura.jpg")
+    log (cadena)
+    MsgBox cadena, vbCritical, App.Title
+End Sub
+Public Function pc_es_tablet() As Boolean
+    
+    Dim tablets As String, arrTablets() As String, i As Long
+    
+    ' carga la lista de ordenadores que son tablets
+    tablets = ReadINI(App.Path & "\config.ini", "Otros", "tablets")
+    arrTablets = Split(tablets, ";")
+    
+    pc_es_tablet = False
+        
+    For i = 0 To (UBound(arrTablets) - 1)
+        If LCase(NOMBRE_PC) = LCase(arrTablets(i)) Then
+            ' si este pc está en la lista, es un tablet
+            pc_es_tablet = True
+            Exit Function
+        End If
+    Next i
+    
+        
+End Function
+
+Public Function subindices(texto As String) As Boolean
+    subindices = False
+    If InStr(1, UCase(texto), "SUP(", vbTextCompare) > 0 Or _
+       InStr(1, UCase(texto), "SUB(", vbTextCompare) > 0 Then
+        subindices = True
+    End If
+End Function
+
+Public Function subindice_formateado(texto As String) As String
+    If subindices(texto) = True Then
+        Dim Pos As Integer
+        Dim pos2 As Integer
+        Dim numero1 As Integer
+        Dim numero2 As Integer
+        Dim exponente As Integer
+        Dim i As Integer
+        Dim total As Long
+        ' Primer numero
+        Pos = InStr(1, UCase(texto), "X")
+        If Pos > 0 Then
+            numero1 = Left(texto, Pos - 1)
+        End If
+        ' Segundo número
+        pos2 = InStr(1, UCase(texto), "SUP(")
+        If Pos < 1 Then
+         Pos = 0
+        End If
+        numero2 = Mid(texto, Pos + 1, pos2 - (Pos + 1))
+        ' Calculamos el exponente
+        Pos = InStr(1, UCase(texto), "SUP")
+        pos2 = InStr(Pos, UCase(texto), ")")
+        exponente = Mid(texto, Pos + 4, pos2 - (Pos + 4))
+        ' Calculamos el total
+        total = 1
+        For i = 1 To exponente
+         total = total * numero2
+        Next
+        subindice_formateado = CStr(numero1 * total)
+    End If
+End Function
+Public Sub cargar_botones(ByVal frm As Form)
+    Dim ctrl As Control
+'    On Error Resume Next
+   On Error GoTo cargar_botones_Error
+
+    For Each ctrl In frm.Controls
+        Select Case TypeName(ctrl)
+           Case "CheckBox", "OptionButton", "CommandButton", "TextBox", "ComboBox"
+               Select Case UCase(ctrl.Name)
+                 Case "CMDACEPTAR", "CMDOK"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(1).Picture
+                 Case "CMDANADIR", "CMDANADIRREACTIVO", "CMDANADIREQUIPO"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(4).Picture
+'                 Case "CMDANULAR"
+'                    ctrl.Text = "Anular"
+'                    Set ctrl.Picture = frmMenu.botones.ListImages(29).Picture
+                 Case "CMDMODIFICAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(6).Picture
+                 Case "CMDELIMINAR", "CMDANULAR", "CMDELIMINAREQUIPO", "CMDELIMINARREACTIVO", "CMDDESVINCULAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(5).Picture
+                 Case "CMDIMPRIMIR", "CMDLISTADO"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(7).Picture
+                 Case "CMDCANCEL", "CMDSALIR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(3).Picture
+                 Case "CMDBUSCAR"
+'                    ctrl.Text = "Buscar"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(8).Picture
+                 Case "CMDDUPLICAR"
+'                    ctrl.Text = "Duplicar"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(10).Picture
+                 Case "CMDQUIEN"
+'                    ctrl.Text = "¿Donde?"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(11).Picture
+'M0996-I
+'                 Case "CMDMAIL"
+                  Case "CMDMAIL", "CMDINVITACION"
+'M0996-F
+'                    ctrl.Text = "¿Donde?"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(20).Picture
+                 Case "CMDFAMILIA"
+'                    ctrl.Text = "¿Donde?"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(9).Picture
+                 Case "CMDETIQUETA", "CMDETIQUETAS"
+'                    ctrl.Text = "¿Donde?"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(13).Picture
+                 Case "CMDLIMPIAR", "CMDRECARGA", "CMDINICIAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(14).Picture
+                 Case "CMDMINIMIZAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(15).Picture
+                 Case "CMDDETER"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(16).Picture
+                 Case "CMDDETERMINACIONES"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(31).Picture
+'M0996-I
+'                 Case "CMDINFORME"
+                 Case "CMDINFORME", "CMDFIRMAS"
+'M0996-F
+                    Set ctrl.Picture = frmMenu.botones.ListImages(17).Picture
+                 Case "CMDVIDA", "CMDCOMIENZO"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(18).Picture
+                 Case "CMDINFREGISTRO"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(19).Picture
+                 Case "CMDADJUNTOS", "CMDADJUNTAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(20).Picture
+                 Case "CMDVERMUESTRA"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(21).Picture
+                 Case "CMDVEREXCEL"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(22).Picture
+                 Case "CMDMOSTRAR", "CMDPREVISUALIZAR", "CMDCREARDOCUMENTOS"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(23).Picture
+                 Case "CMDESCANER"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(24).Picture
+                 Case "CMDUSB"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(25).Picture
+                 Case "CMDGRAFICO", "CMDCURVAS"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(26).Picture
+                 Case "CMDCONSOLIDAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(27).Picture
+                 Case "CMDIMAGEN"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(28).Picture
+                 Case "CMDOBSERVADOR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(30).Picture
+                 Case "CMDTIPOENSAYO"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(31).Picture
+                'M1110-I
+                'Case "CMDPNT"
+                 Case "CMDPNT", "CMDCUALIFICAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(32).Picture
+                'M1110-F
+                 Case "CMDVERIFICACION"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(33).Picture
+                 Case "CMDCALCULAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(34).Picture
+                'M1009-I
+                 Case "CMDOFERTAS"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(35).Picture
+                'M1009-F
+                'M0996-I
+                 Case "CMDFINALIZAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(32).Picture
+                 Case "CMDPARAR"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(2).Picture
+                 Case "CMDDOCCURSO"
+                    Set ctrl.Picture = frmMenu.botones.ListImages(19).Picture
+                'M0996-F
+               End Select
+        End Select
+    Next
+
+   On Error GoTo 0
+   Exit Sub
+
+cargar_botones_Error:
+    MsgBox "Control : " & TypeName(ctrl) & " BOTON: " & UCase(ctrl.Name)
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure cargar_botones of Módulo Funciones"
+End Sub
+Public Function generar_clave_web() As String
+    Randomize
+    generar_clave_web = Str(Int((100000 - 999999 + 1) * Rnd + 999999))
+End Function
+Function moneda(VALOR As String) As String
+    If UCase(ReadINI(App.Path + "\config.ini", "server", "tipo")) = "ACCESS" Then
+        moneda = Format(VALOR, "currency")
+    Else
+        moneda = Format(Replace(VALOR, ".", ","), "currency")
+    End If
+End Function
+Function moneda_bd(VALOR As String) As String
+    VALOR = IIf(Trim(VALOR) = "", "0", VALOR)
+    
+    If UCase(ReadINI(App.Path + "\config.ini", "server", "tipo")) = "ACCESS" Then
+        moneda_bd = Format(VALOR, "currency")
+    Else
+        moneda_bd = Replace(Format(VALOR, "0.00"), ",", ".")
+    End If
+End Function
+
+
+Public Function Establecer_Impresora(ByVal NamePrinter As String) As Boolean
+On Error GoTo errSub
+       
+    'Variable de referencia
+    Dim obj_Impresora As Object
+       
+    'Creamos la referencia
+    Set obj_Impresora = CreateObject("WScript.Network")
+        obj_Impresora.setdefaultprinter NamePrinter
+    Set obj_Impresora = Nothing
+           
+        'La función devuelve true y se cambió con éxito
+        Establecer_Impresora = True
+'        MsgBox "La impresora se cambió correctamente", vbInformation
+    Exit Function
+       
+       
+'Error al cambiar la impresora
+errSub:
+If Err.Number = 0 Then Exit Function
+   Establecer_Impresora = False
+   MsgBox "error: " & Err.Number & Chr(13) & "Description: " & Err.Description
+   On Error GoTo 0
+End Function
+
+Public Function Impresora_Predeterminada() As String
+  
+    Dim Buffer As String
+    Dim ret As Integer
+  
+    Buffer = Space(255)
+  
+    ret = GetProfileString("Windows", ByVal "device", "", _
+                                 Buffer, Len(Buffer))
+  
+    If ret Then
+        Impresora_Predeterminada = UCase(Left(Buffer, _
+                                   InStr(Buffer, ",") - 1))
+    Else
+        MsgBox "Error al recuperar la impresora predeterminada del sistema.", vbCritical, App.Title
+    End If
+    
+End Function
+'M1051-I
+'Public Sub GridBooleanCell(ByRef grid As MSFlexGrid, ByVal fila As Long, ByVal columna As Long, ByVal VALOR As Boolean)
+'    With grid
+'        .Row = fila
+'        .Col = columna
+'        .CellFontName = "Wingdings"
+'        .CellFontSize = 14
+'        .CellAlignment = flexAlignCenterCenter
+'        ' edita la celda
+'
+'        If VALOR Then
+'            '.TextMatrix(.Rows - 1, 1) = Chr(254) ' true
+'            .Text = Chr(254) ' true
+'        Else
+'            '.TextMatrix(.Rows - 1, 1) = Chr(168) ' false
+'            .Text = Chr(168) ' false
+'        End If
+'    End With
+'End Sub
+'
+'Public Sub GridBooleanCell_cambiar_a_no_booleano(ByRef grid As MSFlexGrid, ByVal fila As Long, ByVal columna As Long, ByVal fila_formato As Long, ByVal columna_formato As Long)
+'Dim formato As String, font_size As Single, alineacion As Integer
+'
+'    With grid
+'        .Row = fila_formato
+'        .Col = columna_formato
+'        formato = .CellFontName
+'        font_size = .CellFontSize
+'        alineacion = .CellAlignment
+'
+'        .Row = fila
+'        .Col = columna
+'        .CellFontName = formato
+'        .CellFontSize = font_size
+'        .CellAlignment = alineacion
+'    End With
+'End Sub
+'M1051-F
+
+Public Function KeyAscii_SoloNumerico(ByRef objTxt As TextBox, ByVal KeyAscii As Integer, Optional ByVal Negativos As Boolean = False) As Integer
+
+Select Case KeyAscii
+    Case 8
+        KeyAscii_SoloNumerico = KeyAscii
+    Case 45
+        If Negativos Then
+            If Len(Trim(strCad)) = 0 Then
+                KeyAscii_SoloNumerico = KeyAscii
+            End If
+        End If
+
+    Case Asc("0") To Asc("9")
+        KeyAscii_SoloNumerico = KeyAscii
+    Case Else
+        KeyAscii_SoloNumerico = 0
+End Select
+
+End Function
+
+
+
+Public Function KeyAscii_SoloDecimal(ByRef objTxt As TextBox, ByVal KeyAscii As Integer, Optional ByVal Negativos As Boolean = False) As Integer
+
+Dim strCad As String
+strCad = objTxt.Text
+
+Select Case KeyAscii
+    Case 8
+        KeyAscii_SoloDecimal = KeyAscii
+    Case 45
+        If Negativos Then
+            If Len(Trim(strCad)) = 0 Then
+                KeyAscii_SoloDecimal = KeyAscii
+            End If
+        End If
+    Case Asc("0") To Asc("9")
+        KeyAscii_SoloDecimal = KeyAscii
+    Case Asc("."), Asc(",")
+        If InStr(1, strCad, ",") <= 0 Then
+            ' No Existe el separador Decimal
+            'Ahora comprueba que no esté en la primera posicion
+            If Len(Trim(strCad)) = 0 Then
+                KeyAscii_SoloDecimal = 0 ' Esta en la primera posicion
+            Else
+                KeyAscii_SoloDecimal = Asc(",") ' Siempre usa la coma como separador decimal
+            End If
+        End If
+    Case Else
+        KeyAscii_SoloDecimal = 0
+End Select
+
+End Function
+
+Public Function KeyAscii_SoloDecimal_tbgrid(ByRef objTxt As String, ByVal KeyAscii As Integer, Optional ByVal Negativos As Boolean = False) As Integer
+
+Dim strCad As String
+
+strCad = objTxt
+
+Select Case KeyAscii
+    Case 8
+        KeyAscii_SoloDecimal_tbgrid = KeyAscii
+    Case 45
+        If Negativos Then
+            If Len(Trim(strCad)) = 0 Then
+                KeyAscii_SoloDecimal_tbgrid = KeyAscii
+            End If
+        End If
+    Case Asc("0") To Asc("9")
+        KeyAscii_SoloDecimal_tbgrid = KeyAscii
+    Case Asc("."), Asc(",")
+        If InStr(1, strCad, ",") <= 0 Then
+            ' No Existe el separador Decimal
+            'Ahora comprueba que no esté en la primera posicion
+            If Len(Trim(strCad)) = 0 Then
+                KeyAscii_SoloDecimal_tbgrid = 0 ' Esta en la primera posicion
+            Else
+                KeyAscii_SoloDecimal_tbgrid = Asc(",") ' Siempre usa la coma como separador decimal
+            End If
+        End If
+    Case vbKeyEscape
+        KeyAscii_SoloDecimal_tbgrid = KeyAscii
+    Case Else
+        KeyAscii_SoloDecimal_tbgrid = 0
+End Select
+
+End Function
+'M1051-I
+'Public Function GridBooleanCell_Estado(ByRef grid As MSFlexGrid, ByVal fila As Long, ByVal columna As Long) As Boolean
+'    GridBooleanCell_Estado = False
+'    With grid
+'        .Row = fila
+'        .Col = columna
+'        .CellFontName = "Wingdings"
+'        .CellFontSize = 14
+'        .CellAlignment = flexAlignCenterCenter
+'        ' comprueba el valor de la celda
+'
+'        If Trim(.TextMatrix(fila, columna)) = "" Then
+'            GridBooleanCell_Estado = False
+'        ElseIf Asc(.TextMatrix(fila, columna)) = 254 Then ' false
+'            GridBooleanCell_Estado = True
+'        Else
+'            GridBooleanCell_Estado = False
+'        End If
+'    End With
+'End Function
+'
+'Public Sub EliminarFilaGrid(ByRef grid As MSFlexGrid, ByVal fila As Integer)
+'Dim intRow As Integer, intCol As Integer
+'
+'With grid
+'    If fila <= 0 Then Exit Sub
+'
+'    For intRow = fila To .Rows - 2
+'        For intCol = 0 To .COLS - 1
+'            .TextMatrix(intRow, intCol) = .TextMatrix(intRow + 1, intCol)
+'        Next intCol
+'    Next intRow
+'
+'    .Rows = .Rows - 1
+'End With
+'End Sub
+'M1051-F
+
+
+Public Function ClrStr(Optional ByVal cadena As String = "", Optional ByVal ConvertirAMinuscula As Boolean = True, Optional ByVal QuitarAcentos As Boolean = False) As String
+
+If ConvertirAMinuscula Then cadena = LCase(cadena)
+    
+If QuitarAcentos Then
+    cadena = Replace(cadena, "á", "a")
+    cadena = Replace(cadena, "Á", "A")
+    cadena = Replace(cadena, "é", "e")
+    cadena = Replace(cadena, "í", "i")
+    cadena = Replace(cadena, "ó", "o")
+    cadena = Replace(cadena, "ú", "u")
+    cadena = Replace(cadena, "É", "E")
+    cadena = Replace(cadena, "Í", "I")
+    cadena = Replace(cadena, "Ó", "O")
+    cadena = Replace(cadena, "Ú", "U")
+End If
+
+cadena = Replace(cadena, "'", "")
+
+' devuelve la cadena
+ClrStr = cadena
+ 
+End Function
+
+
+Public Function getDataComboSel(obj As DataCombo, Optional ByVal default As Long = -1) As Long
+    
+On Error GoTo getDataComboSel_Error
+
+    If Trim(obj.BoundText) = "" Then
+        getDataComboSel = default
+    ElseIf Not IsNumeric(obj.BoundText) Then
+        getDataComboSel = default
+    Else
+        getDataComboSel = CLng(obj.BoundText)
+    End If
+
+On Error GoTo 0
+    Exit Function
+getDataComboSel_Error:
+    'MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure getDataComboSel of Módulo Funciones"
+    getDataComboSel = default
+End Function
+
+
+Public Function OrdernarValoresArrayInt(ByRef prmArr() As Integer, ByVal min As Integer, ByVal Max As Integer) As Integer()
+
+Dim newArr() As Integer
+Dim iCont As Integer, intTemp As Integer
+Dim blnContinuar As Boolean
+    
+    ReDim Preserve newArr(Max)
+    
+    For iCont = min To Max
+        newArr(iCont) = prmArr(iCont)
+    Next iCont
+    
+    Do
+        blnContinuar = False
+        
+        For iCont = min + 1 To Max
+            If newArr(iCont - 1) > newArr(iCont) Then ' Si el valor anterior es mayor que el actual
+                intTemp = newArr(iCont)
+                newArr(iCont) = newArr(iCont - 1)
+                newArr(iCont - 1) = intTemp
+                blnContinuar = True
+            End If
+        Next iCont
+        
+    Loop While blnContinuar
+
+    OrdernarValoresArrayInt = newArr
+
+
+End Function
+
+
+Public Function OrdernarValoresArrayLong(ByRef prmArr() As Long, ByVal min As Long, ByVal Max As Long) As Long()
+
+Dim newArr() As Long
+Dim iCont As Long, intTemp As Long
+Dim blnContinuar As Boolean
+    
+    ReDim Preserve newArr(Max)
+    
+    For iCont = min To Max
+        newArr(iCont) = prmArr(iCont)
+    Next iCont
+    
+    Do
+        blnContinuar = False
+        
+        For iCont = min + 1 To Max
+            If newArr(iCont - 1) > newArr(iCont) Then ' Si el valor anterior es mayor que el actual
+                intTemp = newArr(iCont)
+                newArr(iCont) = newArr(iCont - 1)
+                newArr(iCont - 1) = intTemp
+                blnContinuar = True
+            End If
+        Next iCont
+        
+    Loop While blnContinuar
+
+    OrdernarValoresArrayLong = newArr
+
+
+End Function
+
+
+Public Sub EliminarElementoArrayInt(ByRef prmArr() As Integer, ByVal intIndiceEliminado As Integer, ByVal Max As Integer)
+        
+        Dim iCont As Integer
+        
+        For iCont = intIndiceEliminado To Max - 1
+            prmArr(iCont) = prmArr(iCont + 1)
+        Next
+        
+        ReDim Preserve prmArr(Max - 1)
+        
+End Sub
+
+
+Public Function JoinIntArr2String(ByRef prmIntArray() As Integer, Optional delimiter As String = "", Optional ByVal min As Long = -1)
+    Dim Max As Long, cont As Long
+    Dim strres As String
+    
+    If min = -1 Then
+        min = LBound(prmIntArray)
+    End If
+    Max = UBound(prmIntArray)
+    
+    strres = ""
+    
+    For cont = min To Max
+        strres = strres & CStr(prmIntArray(cont)) & delimiter
+    Next cont
+
+    strres = Left(strres, Len(strres) - Len(delimiter))
+
+    JoinIntArr2String = strres
+
+End Function
+
+Public Function JoinLongArr2String(ByRef prmLngArray() As Long, Optional delimiter As String = "")
+    Dim min As Long, Max As Long, cont As Long
+    Dim strres As String
+    
+    min = LBound(prmLngArray)
+    Max = UBound(prmLngArray)
+    
+    strres = ""
+    
+    For cont = min To Max
+        strres = strres & CStr(prmLngArray(cont)) & delimiter
+    Next cont
+
+    strres = Left(strres, Len(strres) - Len(delimiter))
+
+    JoinLongArr2String = strres
+
+End Function
+
+Public Function SplitString2IntArr(ByVal prmCad As String) As Integer()
+
+    Dim x() As Integer
+    Dim cont As Integer
+    
+        ReDim x(Len(prmCad))
+    
+        For cont = 1 To Len(prmCad)
+            x(cont) = CInt(Mid(prmCad, cont, 1))
+        Next cont
+    
+        SplitString2IntArr = x
+    
+End Function
+
+Public Function SplitString2LongArr(ByVal prmCad As String) As Long()
+
+    Dim x() As Long
+    Dim cont As Long
+    
+        ReDim x(Len(prmCad))
+    
+        For cont = 1 To Len(prmCad)
+            x(cont) = CLng(Mid(prmCad, cont, 1))
+        Next cont
+    
+        SplitString2LongArr = x
+    
+End Function
+
+
+Public Function getFechaServidor() As Date
+    Dim RS As ADODB.Recordset
+    
+    Set RS = datos_bd("SELECT LOCALTIMESTAMP as FECHA")
+    
+    RS.MoveFirst
+    
+    getFechaServidor = RS(0)
+    
+    Set RS = Nothing
+    
+End Function
+
+
+Public Function DirTempLocalCreate() As String
+'    On Error Resume Next
+    Dim strTemp As String, fso As New FileSystemObject
+    Dim strRnd As String
+    'Create a buffer
+   On Error GoTo DirTempLocalCreate_Error
+
+    strTemp = String(100, Chr$(0))
+    'Get the temporary path
+    GetTempPath 100, strTemp
+    'strip the rest of the buffer
+    strTemp = Left$(strTemp, InStr(strTemp, Chr$(0)) - 1)
+    
+    Randomize
+    
+    strRnd = CStr(Int((100000 * Rnd) + 1))
+    strRnd = String(8, "_") & strRnd
+    strRnd = Right(strRnd, 8)
+    
+    strTemp = strTemp & strRnd
+    If Not fso.FolderExists(strTemp) Then
+        fso.CreateFolder strTemp
+    End If
+    Set fso = Nothing
+    
+    DIRECTORIO_TEMPORAL = strTemp & "\"
+   
+   On Error GoTo 0
+   Exit Function
+DirTempLocalCreate_Error:
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure DirTempLocalCreate of Módulo Funciones"
+End Function
+
+Public Function DirTempLocalDelete() As String
+'    On Error Resume Next
+    Dim fso As New FileSystemObject
+   On Error GoTo DirTempLocalDelete_Error
+
+    fso.DeleteFolder Left(DIRECTORIO_TEMPORAL, Len(DIRECTORIO_TEMPORAL) - 1), True
+    Set fso = Nothing
+
+   On Error GoTo 0
+   Exit Function
+DirTempLocalDelete_Error:
+'    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure DirTempLocalDelete of Módulo Funciones"
+   log "Error " & Err.Number & " (" & Err.Description & ") in procedure DirTempLocalDelete of Módulo Funciones"
+
+End Function
+
+
+Public Function EscanearATemp(Optional ByVal ExtensionArchivo As String = "pdf") As String
+
+    Dim rutaEscaner As String
+    Dim nombreNuevo As String
+    Dim archivoEscaneado As String
+    
+    nombreNuevo = ""
+        
+    frmEscaner.Show 1
+    
+    If documento_escaner <> "" Then
+        nombreNuevo = ""
+        nombreNuevo = Replace(InputBox("Introduzca nombre para el archivo Escaneado, sin ninguna extensión. " & vbCrLf & "Si lo deja en blanco, se generará de forma automática", "Escaneando Archivo", , Screen.Width / 3, (Screen.Height / 3)), ":", " ")
+    
+        If Trim(nombreNuevo) = "" Then
+            Randomize
+            nombreNuevo = CStr(Int((100000 * Rnd) + 1))
+            nombreNuevo = String(8, "_") & nombreNuevo
+            nombreNuevo = Right(nombreNuevo, 8)
+        End If
+        
+        nombreNuevo = DIRECTORIO_TEMPORAL & nombreNuevo & "." & ExtensionArchivo
+        
+        Dim fso As New FileSystemObject
+        Call fso.CopyFile(documento_escaner, nombreNuevo, True)
+        Set fso = Nothing
+        
+    End If
+            
+    EscanearATemp = nombreNuevo
+
+End Function
+
+Public Function Eliminar_Caracteres_Archivo(cadena As String)
+    Dim nombreNuevo As String
+    nombreNuevo = cadena
+    nombreNuevo = Replace(nombreNuevo, ":", "")
+    nombreNuevo = Replace(nombreNuevo, "/", "")
+    nombreNuevo = Replace(nombreNuevo, "\", "")
+    nombreNuevo = Replace(nombreNuevo, "*", "")
+    nombreNuevo = Replace(nombreNuevo, "?", "")
+    nombreNuevo = Replace(nombreNuevo, "<", "")
+    nombreNuevo = Replace(nombreNuevo, ">", "")
+    nombreNuevo = Replace(nombreNuevo, "'", "")
+    Eliminar_Caracteres_Archivo = nombreNuevo
+End Function
+
+Public Sub OrdernarColumnaMsGrid(ByRef grid As MSFlexGrid, ByVal sort_column As Integer)
+Static m_SortColumn As Integer
+Static m_SortOrder As Integer
+    ' Hide the FlexGrid.
+    grid.Visible = False
+    grid.Refresh
+
+    ' Sort using the clicked column.
+    grid.Col = sort_column
+    grid.ColSel = sort_column
+    grid.Row = 0
+    grid.RowSel = 0
+
+    ' If this is a new sort column, sort ascending.
+    ' Otherwise switch which sort order we use.
+    If m_SortColumn <> sort_column Then
+        m_SortOrder = flexSortGenericAscending
+    ElseIf m_SortOrder = flexSortGenericAscending Then
+        m_SortOrder = flexSortGenericDescending
+    Else
+        m_SortOrder = flexSortGenericAscending
+    End If
+    grid.Sort = m_SortOrder
+
+    ' Restore the previous sort column's name.
+'    If m_SortColumn >= 0 Then
+'        grid.TextMatrix(0, m_SortColumn) = _
+'            Mid$(grid.TextMatrix(0, m_SortColumn), 3)
+'    End If
+
+    ' Display the new sort column's name.
+    m_SortColumn = sort_column
+'    If m_SortOrder = flexSortGenericAscending Then
+'        If Left(grid.TextMatrix(0, m_SortColumn), 2) = "> " Or Left(grid.TextMatrix(0, m_SortColumn), 2) = "< " Then
+'            grid.TextMatrix(0, m_SortColumn) = "> " & _
+'                Mid(grid.TextMatrix(0, m_SortColumn), 3)
+'        Else
+'            grid.TextMatrix(0, m_SortColumn) = "> " & _
+'                grid.TextMatrix(0, m_SortColumn)
+'        End If
+'    Else
+'        If Left(grid.TextMatrix(0, m_SortColumn), 2) = "> " Or Left(grid.TextMatrix(0, m_SortColumn), 2) = "< " Then
+'            grid.TextMatrix(0, m_SortColumn) = "< " & _
+'                Mid(grid.TextMatrix(0, m_SortColumn), 3)
+'        Else
+'            grid.TextMatrix(0, m_SortColumn) = "< " & _
+'                grid.TextMatrix(0, m_SortColumn)
+'        End If
+'    End If
+
+    ' Display the FlexGrid.
+    grid.Visible = True
+    
+End Sub
+
+Public Function MostrarInforme(codmuestra As Long) As Boolean
+   On Error GoTo Informe_Error
+'M1051    Dim oTD As New clsTipos_documentos
+'M1051    If oTD.esManual(codmuestra) Then
+'M1051        frmPrevisualizarWord.Show
+'M1051    Else
+        frmPrevisualizar.PK = codmuestra
+        frmPrevisualizar.Show 1
+'M1051    End If
+    MostrarInforme = True
+    Set oTD = Nothing
+   On Error GoTo 0
+   Exit Function
+
+Informe_Error:
+    MostrarInforme = False
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure MostrarInforme"
+End Function
+
+Public Function Salir()
+    DirTempLocalDelete
+    Dim oemp As New clsUsuarios
+    oemp.deslogonear (USUARIO.getID_EMPLEADO)
+    Set oemp = Nothing
+    Set gFSO = Nothing
+    End
+End Function
+
+Public Sub FTP(fichero_remoto As String, fichero_local As String, Abrir As Boolean)
+    Dim oFtp As New clsFTP
+   On Error GoTo trae_fichero_Error
+    If fichero_local = "" Then
+        fichero_local = App.Path & "\DOC.PDF"
+    End If
+    With oFtp
+        .Servidor = ReadINI(App.Path + "\config.ini", "server", "FTP")
+        .USUARIO = "geslab"
+        .PassWord = "aer0p0lis"
+        .ConectarFtp
+        .TipoTransferencia = [ BINARIO ]
+        .ObtenerArchivo fichero_remoto, fichero_local, True
+        .Desconectar
+    End With
+    If Abrir = True Then
+        Dim iret As Long
+        iret = ShellExecute(0, vbNullString, fichero_local, vbNullString, "c:", 1)
+    End If
+   On Error GoTo 0
+   Exit Sub
+
+trae_fichero_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure trae_fichero of Módulo globales"
+End Sub
+
+Public Function calcularFechaFinalizacion(fechaInicio As Date, numeroDias As Integer) As Date
+    ' Devuelve la fecha final quitando los sabados y domingos
+    Dim fechaAux As Date
+   On Error GoTo ChecarTiempo_Error
+
+    DIAS = numeroDias
+    fechaAux = fechaInicio
+    While DIAS > 0
+        fechaAux = DateAdd("d", 1, fechaAux)
+        If Weekday(fechaAux) <> vbSaturday And Weekday(fechaAux) <> vbSunday Then
+            DIAS = DIAS - 1
+        End If
+    Wend
+    calcularFechaFinalizacion = fechaAux
+
+   On Error GoTo 0
+   Exit Function
+
+ChecarTiempo_Error:
+
+    MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure calcularFechaFinalizacion of Módulo Funciones"
+End Function
+
+Public Function Solo_Numeros(ByRef sText As String) As String
+    Dim sActualChar                 As String * 1
+    Dim lTotalChar                  As Long
+    Dim x                           As Long
+    
+    lTotalChar = LenB(sText) \ 2
+  
+    If CBool(lTotalChar) Then
+        For x = 1 To lTotalChar
+            sActualChar = Mid$(sText, x, 1)
+            If IsNumeric(sActualChar) Then Solo_Numeros = Solo_Numeros & sActualChar
+        Next
+    End If
+    
+End Function

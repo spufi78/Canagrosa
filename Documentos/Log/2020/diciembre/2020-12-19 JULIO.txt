@@ -1,0 +1,633 @@
+19/12/2020;10:48:54;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;10:48:54;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;10:48:54;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:54;DES-JGM;frmErrores
+19/12/2020;10:48:54;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:54;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;10:48:54;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;10:48:54;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;10:48:54;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;10:48:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:55;DES-JGM;frmCambioUsuario
+19/12/2020;10:48:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:55;DES-JGM;frmTareas_Incurrir
+19/12/2020;10:48:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:55;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;10:48:55;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;10:48:55;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;10:48:55;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;10:48:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:55;DES-JGM;frmTelefonos
+19/12/2020;10:48:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:55;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;10:48:55;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;10:48:55;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;10:48:55;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;10:48:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:56;DES-JGM;frmCalendario
+19/12/2020;10:48:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:56;DES-JGM;frmMenu2
+19/12/2020;10:48:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:56;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;10:48:56;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;10:48:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:56;DES-JGM;frmTD_Detalle
+19/12/2020;10:48:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:48:56;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;10:48:56;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;10:48:57;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;10:48:57;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;10:48:57;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;10:49:00;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:49:00;DES-JGM;frmBANO_Listado
+19/12/2020;10:49:00;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:49:00;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%%'  and b.anulado = 0  order by b.nombre
+19/12/2020;10:49:01;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:49:01;DES-JGM;frmBANO_Detalle
+19/12/2020;10:49:01;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;10:49:02;DES-JGM;Select * from banos where id_bano = 278
+19/12/2020;10:49:02;DES-JGM;SELECT sum(tp.precio)   from determinaciones_analisis da left join tipos_determinacion tp  on da.tipo_determinacion_id = tp.id_tipo_determinacion  where da.bano_id = 278
+19/12/2020;10:49:02;DES-JGM;SELECT * FROM clientes WHERE ID_CLIENTE=2227
+19/12/2020;10:49:02;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA = 14   AND A.ID_TARIFA > 0    AND A.EN_VIGOR = 1    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA  ORDER BY A.NOMBRE
+19/12/2020;10:49:02;DES-JGM;SELECT * FROM clientes WHERE ID_CLIENTE=2227
+19/12/2020;10:49:02;DES-JGM;SELECT * FROM clientes WHERE ID_CLIENTE=2227
+19/12/2020;10:49:02;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE BANO_ID = 278   AND TARIFA_ID = 14 ORDER BY TARIFA_ID
+19/12/2020;10:49:02;DES-JGM;SELECT * FROM airbus_objetos WHERE TOBJETO = 50 AND COBJETO = 278
+19/12/2020;10:49:09;DES-JGM;Select * from banos where id_bano = 278
+19/12/2020;10:49:09;DES-JGM;SELECT * FROM clientes WHERE ID_CLIENTE=2227
+19/12/2020;10:49:09;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:09:25;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:09:25;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:09:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:26;DES-JGM;frmErrores
+19/12/2020;11:09:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:09:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:09:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:09:26;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:09:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:26;DES-JGM;frmCambioUsuario
+19/12/2020;11:09:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:26;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:09:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:09:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:09:26;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:09:26;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;frmTelefonos
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:09:27;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:09:27;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;frmCalendario
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;frmMenu2
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:09:27;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;frmTD_Detalle
+19/12/2020;11:09:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:27;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:09:27;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:09:27;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:09:27;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:09:27;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:09:53;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:53;DES-JGM;frmBANO_Listado
+19/12/2020;11:09:53;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:53;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:09:54;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:09:55;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:09:55;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.0%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:09:55;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.08%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:09:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:56;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:09:56;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:09:56;DES-JGM;Select * from banos where id_bano = 2199
+19/12/2020;11:09:56;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 2199 ORDER BY A.ORDEN
+19/12/2020;11:25:33;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:25:33;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmErrores
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:25:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:25:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:25:34;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmCambioUsuario
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:25:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:25:34;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:25:34;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmTelefonos
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:25:34;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:25:34;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:25:34;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmCalendario
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmMenu2
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:25:34;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;frmTD_Detalle
+19/12/2020;11:25:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:34;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:25:35;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:25:35;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:25:35;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:25:35;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:25:38;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:38;DES-JGM;frmBANO_Listado
+19/12/2020;11:25:38;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:38;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:25:41;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:41;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:25:41;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:41;DES-JGM;Select * from banos where id_bano = 278
+19/12/2020;11:25:41;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 278 ORDER BY A.ORDEN
+19/12/2020;11:25:51;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:25:52;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:25:52;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.0%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:25:52;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.08%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:25:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:55;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:25:55;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:25:55;DES-JGM;Select * from banos where id_bano = 2199
+19/12/2020;11:25:55;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 2199 ORDER BY A.ORDEN
+19/12/2020;11:26:04;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:26:04;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:26:04;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:26:34;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:26:34;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:26:34;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:27:04;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:27:04;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:27:04;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:27:34;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:27:34;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:27:34;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:28:04;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:28:04;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:28:04;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:28:21;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:28:21;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:28:21;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:28:21;DES-JGM;Select * from banos where id_bano = 2199
+19/12/2020;11:28:21;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 2199 ORDER BY A.ORDEN
+19/12/2020;11:28:34;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:28:34;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:28:34;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:28:58;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:29:26;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:29:26;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:29:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:26;DES-JGM;frmErrores
+19/12/2020;11:29:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:29:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:29:26;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:29:26;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:29:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:26;DES-JGM;frmCambioUsuario
+19/12/2020;11:29:26;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:29:27;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:29:27;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:29:27;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;frmTelefonos
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:29:27;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:29:27;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;frmCalendario
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;frmMenu2
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:29:27;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;frmTD_Detalle
+19/12/2020;11:29:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:27;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:29:27;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:29:27;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:29:27;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:29:27;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:29:37;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:37;DES-JGM;frmBANO_Listado
+19/12/2020;11:29:37;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:37;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:29:38;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:29:38;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:29:38;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.0%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:29:38;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.08%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:29:40;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:40;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:29:40;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:29:40;DES-JGM;Select * from banos where id_bano = 2199
+19/12/2020;11:29:40;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 2199 ORDER BY A.ORDEN
+19/12/2020;11:29:47;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:33:21;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:33:21;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;frmErrores
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:33:22;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:33:22;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:33:22;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;frmCambioUsuario
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:33:22;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:33:22;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:33:22;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;frmTelefonos
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:33:22;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:33:22;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:33:22;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;frmCalendario
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;frmMenu2
+19/12/2020;11:33:22;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:22;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:33:23;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:33:23;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:23;DES-JGM;frmTD_Detalle
+19/12/2020;11:33:23;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:23;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:33:23;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:33:23;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:33:23;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:33:23;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:33:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:27;DES-JGM;frmBANO_Listado
+19/12/2020;11:33:27;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:27;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:33:28;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:33:28;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:33:28;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.0%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:33:28;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.08%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:33:30;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:30;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:33:30;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:33:30;DES-JGM;Select * from banos where id_bano = 2199
+19/12/2020;11:33:30;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 2199 ORDER BY A.ORDEN
+19/12/2020;11:33:39;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 2930
+19/12/2020;11:33:52;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:33:52;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:33:52;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:33:58;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:40:50;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:40:50;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;frmErrores
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:40:51;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:40:51;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:40:51;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;frmCambioUsuario
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:40:51;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:40:51;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:40:51;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;frmTelefonos
+19/12/2020;11:40:51;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:51;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:40:51;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:40:51;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:40:51;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:40:52;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:52;DES-JGM;frmCalendario
+19/12/2020;11:40:52;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:52;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:52;DES-JGM;frmMenu2
+19/12/2020;11:40:52;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:52;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:40:52;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:40:52;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:52;DES-JGM;frmTD_Detalle
+19/12/2020;11:40:52;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:40:52;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:40:52;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:40:52;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:40:52;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:40:52;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:40:57;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:46:34;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:46:34;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:46:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:34;DES-JGM;frmErrores
+19/12/2020;11:46:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:46:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:46:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:46:34;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:46:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:34;DES-JGM;frmCambioUsuario
+19/12/2020;11:46:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:34;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:46:34;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:46:34;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:46:35;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:46:35;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;frmTelefonos
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:46:35;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:46:35;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;frmCalendario
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;frmMenu2
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:46:35;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;frmTD_Detalle
+19/12/2020;11:46:35;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:46:35;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:46:35;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:46:35;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:46:35;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:46:35;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:47:05;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:47:05;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:47:05;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:47:14;DES-JGM;DELETE FROM TIPOS_DETERMINACION_CONTRATAS     WHERE TIPO_DETERMINACION_ID = 4510
+19/12/2020;11:47:14;DES-JGM;SELECT MAX(ID_TIPO_DET_CONTRATA) FROM TIPOS_DETERMINACION_CONTRATAS
+19/12/2020;11:47:15;DES-JGM;INSERT INTO TIPOS_DETERMINACION_CONTRATAS   VALUES (3447,4510,425,'12','3232', '3232.00') ON DUPLICATE KEY UPDATE VALOR_REFERENCIA='12', NORMATIVA_APLICABLE = '3232', PRECIO = '3232.00'
+19/12/2020;11:47:15;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:47:15;DES-JGM;frmMotivo
+19/12/2020;11:47:15;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:47:16;DES-JGM; UPDATE TIPOS_DETERMINACION   SET NOMBRE= 'LEFT TANK (EXT)',   NOMBRE_INGLES ='',          PNT='PNT IB 302', PROC_REF_EADS ='HY-LITE Jet A1',   DESCRIPCION ='Hylite. PNT IB 302',   PRECIO ='0.00',   TARIFA_CODIGO_ID =0,   REVISAR_FACTURA = 0,   FAMILIA_ID = 3,   PARTICULAS = 0,   FORMULA_ID = 1880,   ES_SUBCONTRATABLE = 0,   METODO = '',   PNT_VINCULADO = 2676 WHERE ID_TIPO_DETERMINACION=4510
+19/12/2020;11:47:16;DES-JGM;DELETE FROM TIPOS_DETERMINACION_CONF     WHERE TIPO_DETERMINACION_ID = 4510
+19/12/2020;11:47:16;DES-JGM;INSERT INTO TIPOS_DETERMINACION_CONF   VALUES (4510,0,'Defecto',1.23,'0.763 *Xmedio',2,5.67,1.23,4.56,)
+19/12/2020;11:47:19;DES-JGM;DELETE tp FROM tarifas_precios as tp INNER JOIN tarifas as t     WHERE tp.TARIFA_ID = t.ID_TARIFA and t.EN_VIGOR = 1 AND TIPO_DETERMINACION_ID = 4510
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4510,0,0,133,'110.00')
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4510,0,0,25,'110.00')
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4510,0,0,179,'65.00')
+19/12/2020;11:47:19;DES-JGM;DELETE FROM TIPOS_DETERMINACION_EQUIPOS     WHERE TIPO_DETERMINACION_ID = 4510
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TIPOS_DETERMINACION_EQUIPOS   VALUES (4510,3441,1)
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TIPOS_DETERMINACION_EQUIPOS   VALUES (4510,3810,2)
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TIPOS_DETERMINACION_EQUIPOS   VALUES (4510,3110,3)
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TIPOS_DETERMINACION_EQUIPOS   VALUES (4510,8242,4)
+19/12/2020;11:47:19;DES-JGM;DELETE FROM TIPOS_DETERMINACION_BOTES_EX     WHERE TIPO_DETERMINACION_ID = 4510
+19/12/2020;11:47:19;DES-JGM;INSERT INTO TIPOS_DETERMINACION_BOTES_EX   VALUES (4510,13009,'E',1)
+19/12/2020;11:47:21;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:49:41;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:49:41;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;frmErrores
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:49:42;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:49:42;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:49:42;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;frmCambioUsuario
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:49:42;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:49:42;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:49:42;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;frmTelefonos
+19/12/2020;11:49:42;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:42;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:49:42;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:49:42;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:49:42;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:49:43;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:43;DES-JGM;frmCalendario
+19/12/2020;11:49:43;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:43;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:43;DES-JGM;frmMenu2
+19/12/2020;11:49:43;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:43;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:49:43;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:49:43;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:43;DES-JGM;frmTD_Detalle
+19/12/2020;11:49:43;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:49:43;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:49:43;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:49:43;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:49:43;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:49:43;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:50:00;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:50:00;DES-JGM;frmBANO_Listado
+19/12/2020;11:50:00;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:50:00;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:50:02;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:50:02;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:50:02;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.0%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:50:02;DES-JGM;select b.id_bano, b.nombre as bano, cli.nombre, b.anulado   from banos b, clientes cli  where b.cliente_id = cli.id_cliente    and b.nombre like '%1.08%'  and b.anulado = 0  order by b.nombre
+19/12/2020;11:50:04;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:50:04;DES-JGM;frmDeterminaciones_analisis
+19/12/2020;11:50:04;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:50:04;DES-JGM;Select * from banos where id_bano = 2199
+19/12/2020;11:50:04;DES-JGM;SELECT B.PNT,B.NOMBRE,B.DESCRIPCION,A.MINIMO,A.MAXIMO,        B.ID_TIPO_DETERMINACION,A.REQUERIDA,A.ORDEN,        B.FORMULA_ID,B.PRECIO,A.MINIMO_TEXTO,A.MAXIMO_TEXTO,B.METODO, A.LIM_MINIMO, A.LIM_MAXIMO,A.GRAFICO,IFNULL(C.NOMBRE,'') AS TIPO_FRECUENCIA,IFNULL(A.TIPO_FRECUENCIA_ID,'') AS TIPO_FRECUENCIA_ID   FROM DETERMINACIONES_ANALISIS A   INNER JOIN TIPOS_DETERMINACION B ON A.TIPO_DETERMINACION_ID = B.ID_TIPO_DETERMINACION   LEFT JOIN TIPOS_FRECUENCIA C ON A.TIPO_FRECUENCIA_ID = C.ID_TIPO_FRECUENCIA  WHERE 1 = 1  AND A.BANO_ID = 2199 ORDER BY A.ORDEN
+19/12/2020;11:50:12;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:50:12;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:50:12;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:50:17;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:50:17;DES-JGM;frmTD_Detalle
+19/12/2020;11:50:17;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:50:17;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:50:17;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4133
+19/12/2020;11:50:17;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4133 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:50:17;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4133 ORDER BY TARIFA_ID
+19/12/2020;11:50:17;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4133 ORDER BY A.ORDEN
+19/12/2020;11:50:17;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4133 ORDER BY A.ORDEN
+19/12/2020;11:50:17;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4133 ORDER BY ORDEN
+19/12/2020;11:50:42;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:50:42;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:50:42;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:51:12;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:51:12;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:51:12;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:51:20;DES-JGM;DELETE FROM TIPOS_DETERMINACION_CONTRATAS     WHERE TIPO_DETERMINACION_ID = 4133
+19/12/2020;11:51:21;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:51:21;DES-JGM;frmMotivo
+19/12/2020;11:51:21;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:51:22;DES-JGM; UPDATE TIPOS_DETERMINACION   SET NOMBRE= 'FACTOR DE ATAQUE (2024 T3 unclad)',   NOMBRE_INGLES ='ETCH RATE',          PNT='PNT B 788', PROC_REF_EADS ='PNT B 788',   DESCRIPCION ='Turco Smut Go NC',   PRECIO ='0.00',   TARIFA_CODIGO_ID =80,   REVISAR_FACTURA = 0,   FAMILIA_ID = 0,   PARTICULAS = 0,   FORMULA_ID = 2241,   ES_SUBCONTRATABLE = 0,   METODO = '',   PNT_VINCULADO = 0 WHERE ID_TIPO_DETERMINACION=4133
+19/12/2020;11:51:22;DES-JGM;DELETE FROM TIPOS_DETERMINACION_CONF     WHERE TIPO_DETERMINACION_ID = 4133
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TIPOS_DETERMINACION_CONF   VALUES (4133,0,'Defecto',2.34,'2',3.45,1.23,4.56,5.67)
+19/12/2020;11:51:22;DES-JGM;DELETE tp FROM tarifas_precios as tp INNER JOIN tarifas as t     WHERE tp.TARIFA_ID = t.ID_TARIFA and t.EN_VIGOR = 1 AND TIPO_DETERMINACION_ID = 4133
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4133,0,0,19,'20.95')
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4133,0,0,86,'20.95')
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4133,0,0,120,'20.85')
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4133,0,0,155,'20.85')
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4133,0,0,101,'20.95')
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TARIFAS_PRECIOS   VALUES (4133,0,0,16,'21.44')
+19/12/2020;11:51:22;DES-JGM;DELETE FROM TIPOS_DETERMINACION_EQUIPOS     WHERE TIPO_DETERMINACION_ID = 4133
+19/12/2020;11:51:22;DES-JGM;INSERT INTO TIPOS_DETERMINACION_EQUIPOS   VALUES (4133,707,1)
+19/12/2020;11:51:23;DES-JGM;INSERT INTO TIPOS_DETERMINACION_EQUIPOS   VALUES (4133,712,2)
+19/12/2020;11:51:23;DES-JGM;DELETE FROM TIPOS_DETERMINACION_BOTES_EX     WHERE TIPO_DETERMINACION_ID = 4133
+19/12/2020;11:51:25;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:51:25;DES-JGM;frmTD_Detalle
+19/12/2020;11:51:25;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:51:25;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:51:25;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4133
+19/12/2020;11:51:25;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4133 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:51:25;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4133 ORDER BY TARIFA_ID
+19/12/2020;11:51:25;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4133 ORDER BY A.ORDEN
+19/12/2020;11:51:25;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4133 ORDER BY A.ORDEN
+19/12/2020;11:51:25;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4133 ORDER BY ORDEN
+19/12/2020;11:51:40;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18
+19/12/2020;11:54:30;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=18
+19/12/2020;11:54:30;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmErrores
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+19/12/2020;11:54:31;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:54:31;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+19/12/2020;11:54:31;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 18 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmCambioUsuario
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmTareas_Incurrir
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+19/12/2020;11:54:31;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+19/12/2020;11:54:31;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+19/12/2020;11:54:31;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-19'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 18   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmTelefonos
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+19/12/2020;11:54:31;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+19/12/2020;11:54:31;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+19/12/2020;11:54:31;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmCalendario
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmMenu2
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;SELECT ID_CENTRO,NOMBRE FROM CENTROS UNION SELECT 0,'' ORDER BY NOMBRE
+19/12/2020;11:54:31;DES-JGM;SELECT COUNT(*)  FROM empleados_cualificaciones EC  INNER JOIN ca_documentos D ON EC.DOCUMENTO_ID = D.ID_DOCUMENTO  INNER JOIN empleados E1 ON EC.EMPLEADO_ID = E1.ID_EMPLEADO  INNER JOIN empleados E2 ON EC.EMPLEADO_ID_FORMADOR = E2.ID_EMPLEADO  WHERE 1 = 1  AND EC.EMPLEADO_ID = 85 AND E1.ESTADO_ID = 0 AND EC.EN_HISTORICO = 0 AND EC.FECHA_FIRMA_TECNICO <> '1900-01-01'  AND D.USO = 1  AND (  (CURRENT_DATE > DATE_ADD(EC.FECHA_ULTIMA_RECUALIFICACION, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION <> '1900-01-01') OR  (CURRENT_DATE > DATE_ADD(EC.FECHA_FIRMA_TECNICO, INTERVAL IF (INSTR(D.NOMBRE,'PNT C'),35,23) MONTH) AND EC.FECHA_ULTIMA_RECUALIFICACION = '1900-01-01')  )
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;frmTD_Detalle
+19/12/2020;11:54:31;DES-JGM;---------------------------------------------------------------------------
+19/12/2020;11:54:31;DES-JGM;SELECT A.NOMBRE, B.NOMBRE, A.PORCENTAJE, A.ID_TARIFA  FROM TARIFAS A, TARIFAS B  WHERE A.ID_TARIFA >= 0    AND A.TARIFA_ORIGEN_ID = B.ID_TARIFA    AND A.EN_VIGOR = 1  ORDER BY A.NOMBRE
+19/12/2020;11:54:31;DES-JGM;select * from tipos_determinacion where id_tipo_determinacion = 4510
+19/12/2020;11:54:31;DES-JGM;SELECT * FROM ca_documentos WHERE ID_DOCUMENTO = 2676
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONTRATAS WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ID_TIPO_DET_CONTRATA
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM proveedores WHERE ID_PROVEEDOR=425
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM TARIFAS_PRECIOS  WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY TARIFA_ID
+19/12/2020;11:54:32;DES-JGM;SELECT B.ID_EQUIPO,B.NOMBRE,B.SERIE  FROM TIPOS_DETERMINACION_EQUIPOS A,EQUIPOS B  WHERE A.EQUIPO_ID = B.ID_EQUIPO    AND A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:54:32;DES-JGM;SELECT A.BOTE_EX_ID,A.TIPO  FROM TIPOS_DETERMINACION_BOTES_EX A  WHERE A.TIPO_DETERMINACION_ID = 4510 ORDER BY A.ORDEN
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM BOTES_EX WHERE ID_BOTE_EX=13009
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM TIPOS_BOTE_EX WHERE ID_TIPO_BOTE_EX=873
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM TIPOS_REACTIVO_EX WHERE ID_TIPO_REACTIVO_EX=877
+19/12/2020;11:54:32;DES-JGM;SELECT * FROM TIPOS_DETERMINACION_CONF WHERE TIPO_DETERMINACION_ID = 4510 ORDER BY ORDEN
+19/12/2020;11:54:49;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18

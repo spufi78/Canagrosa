@@ -1,0 +1,9 @@
+frmTBOX = 110, 110, 862, 552, Z, 44, 44, 796, 486, C
+general = 176, 176, 1354, 820, 
+Ini = 0, 0, 0, 0, C
+clsImpresion = 242, 242, 1163, 878, C
+Correo = 176, 176, 1389, 820, 
+Constantes = 308, 308, 1521, 952, 
+clsFTP = 0, 0, 0, 0, C
+MataProcesos = 198, 198, 1411, 842, C
+clsTorque_tbox = 110, 110, 1444, 696, C

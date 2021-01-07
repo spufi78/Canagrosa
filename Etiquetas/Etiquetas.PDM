@@ -1,0 +1,231 @@
+[Root]
+Most Recent Package=Paquete de instalación estándar 1
+
+
+[Package|Paquete de instalación estándar 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=Z:\Compartida\Proyectos\Huesna\Laboratorio\Geslab\Etiquetas\Paquete
+
+[Package|Paquete de instalación estándar 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Paquete de instalación estándar 1|Files Found]
+
+[Package|Paquete de instalación estándar 1|Files Released]
+u2dpost.dll=
+u2fxml.dll=
+u2fsepv.dll=
+
+[Package|Paquete de instalación estándar 1|Missing Dependency Information]
+\\192.168.1.253\canagrosa\miCombo.ocx=
+C:\WINDOWS\system32\msxml6.dll=
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=
+C:\Archivos de programa\PDFCreator\PDFCreator.exe=
+C:\WINDOWS\system32\AcroPDF.dll=
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=
+C:\WINDOWS\system32\cdosys.dll=
+C:\Archivos de programa\Microsoft Office\Office12\MSOUTL.OLB=
+C:\Archivos de programa\Archivos comunes\Microsoft Shared\OFFICE12\MSO.DLL=
+C:\Archivos de programa\Microsoft Office\Office12\MSWORD.OLB=
+
+[Package|Paquete de instalación estándar 1|Out-of-Date Dependency Information]
+C:\WINDOWS\system32\MSCOMCTL.OCX=
+C:\WINDOWS\system32\scrrun.dll=
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\craxdrt.dll=
+
+[Package|Paquete de instalación estándar 1|Files Added]
+
+[Package|Paquete de instalación estándar 1|Files Removed]
+
+[Package|Paquete de instalación estándar 1|Files In Project]
+C:\Etiquetas.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\VB6ES.DLL=Yes
+C:\Archivos de programa\Microsoft Office\Office12\MSWORD.OLB=Yes
+C:\Archivos de programa\Archivos comunes\Microsoft Shared\OFFICE12\MSO.DLL=Yes
+C:\Archivos de programa\Microsoft Office\Office12\MSOUTL.OLB=Yes
+C:\WINDOWS\system32\cdosys.dll=Yes
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\craxdrt.dll=Yes
+C:\WINDOWS\system32\cslibu-2-0-0.dll=Yes
+C:\WINDOWS\system32\msvcr71.dll=Yes
+C:\WINDOWS\system32\mfc71u.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crtowords_en.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ufmanager.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2l2000.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lcom.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ldts.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lexch.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lfinra.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u252000.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u25dts.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u25samp1.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\Implode.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crqe.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_ado.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_dao.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_odbc.dll=Yes
+C:\WINDOWS\system32\cxlibw-2-6.dll=Yes
+C:\WINDOWS\system32\libOCASecurityw-1-6.dll=Yes
+C:\WINDOWS\system32\ebus-3-3-2-4.dll=Yes
+C:\WINDOWS\system32\libOCAHelperw-2-13.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\querybuilder.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\sscsdk80.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_rtf.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ExportModeller.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crtslv.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_wordw.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_xls.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_pdf.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2fcr.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ftext.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ddisk.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2dapp.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\keycode.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdeploy.reg=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\saxserialize.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\saxmlserialize.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\sacommlayer.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\prompt.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ParameterDesigner.dll=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\xerces-c_2_1_0.dll=Yes
+C:\WINDOWS\system32\atl71.dll=Yes
+C:\WINDOWS\system32\etc-1-0-12-3.dll=Yes
+C:\WINDOWS\system32\MSVCP71.dll=Yes
+C:\WINDOWS\system32\fssl-1-2-1-1.dll=Yes
+C:\Archivos de programa\Archivos comunes\System\ado\msadox.dll=Yes
+C:\WINDOWS\system32\AcroPDF.dll=Yes
+C:\WINDOWS\system32\scrrun.dll=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=Yes
+C:\WINDOWS\system32\scrrnes.dll=Yes
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\MSCMCES.DLL=Yes
+\\192.168.1.253\canagrosa\miCombo.ocx=Yes
+C:\WINDOWS\system32\MSDATLST.OCX=Yes
+C:\WINDOWS\system32\DATLSES.DLL=Yes
+C:\WINDOWS\system32\Codejock.Controls.v13.2.1.ocx=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\WINDOWS\system32\odbccp32.dll=Yes
+
+[Package|Paquete de instalación estándar 1|Configure Registry Files]
+Applicable=Yes
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdeploy.reg=Register
+
+[Package|Paquete de instalación estándar 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Install Locations]
+C:\Etiquetas.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB6ES.DLL=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\Office12\MSWORD.OLB=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Microsoft Shared\OFFICE12\MSO.DLL=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\Office12\MSOUTL.OLB=$(WinSysPath)
+C:\WINDOWS\system32\cdosys.dll=$(WinSysPath)
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\craxdrt.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\WINDOWS\system32\cslibu-2-0-0.dll=$(WinSysPath)
+C:\WINDOWS\system32\msvcr71.dll=$(WinSysPath)
+C:\WINDOWS\system32\mfc71u.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crtowords_en.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ufmanager.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2l2000.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lcom.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ldts.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lexch.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lfinra.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u252000.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u25dts.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u25samp1.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\Implode.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crqe.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_ado.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_dao.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_odbc.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\WINDOWS\system32\cxlibw-2-6.dll=$(WinSysPath)
+C:\WINDOWS\system32\libOCASecurityw-1-6.dll=$(WinSysPath)
+C:\WINDOWS\system32\ebus-3-3-2-4.dll=$(WinSysPath)
+C:\WINDOWS\system32\libOCAHelperw-2-13.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\querybuilder.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\sscsdk80.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_rtf.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ExportModeller.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crtslv.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_wordw.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_xls.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_pdf.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2fcr.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ftext.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ddisk.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2dapp.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\keycode.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\saxserialize.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\saxmlserialize.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\sacommlayer.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\prompt.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ParameterDesigner.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\xerces-c_2_1_0.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\WINDOWS\system32\atl71.dll=$(WinSysPath)
+C:\WINDOWS\system32\etc-1-0-12-3.dll=$(WinSysPath)
+C:\WINDOWS\system32\MSVCP71.dll=$(WinSysPath)
+C:\WINDOWS\system32\fssl-1-2-1-1.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\System\ado\msadox.dll=$(WinSysPath)
+C:\WINDOWS\system32\AcroPDF.dll=$(WinSysPath)
+C:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\scrrnes.dll=$(WinSysPath)
+C:\Archivos de programa\PDFCreator\PDFCreator.exe=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=$(AppPath)
+C:\WINDOWS\system32\msxml6.dll=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCMCES.DLL=$(WinSysPath)
+\\192.168.1.253\canagrosa\miCombo.ocx=$(WinSysPath)
+C:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+C:\WINDOWS\system32\DATLSES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\Codejock.Controls.v13.2.1.ocx=$(WinSysPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\WINDOWS\system32\odbccp32.dll=$(WinSysPath)
+
+[Package|Paquete de instalación estándar 1|Configure Shared Files]
+Applicable=Yes
+C:\Etiquetas.exe=No
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=No
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+
+[Package|Paquete de instalación estándar 1|Distribution]
+Type=single
+Size=
+Title=Generador de Etiquetas
+
+[Package|Paquete de instalación estándar 1|Package]
+PackageFolder=Z:\Compartida\Proyectos\Huesna\Laboratorio\Geslab\Etiquetas\Paquete
+ProjectFolder=Z:\Compartida\Proyectos\Huesna\Laboratorio\Geslab\Etiquetas
+ServerSideCab=
+File1=Z:\Compartida\Proyectos\Huesna\Laboratorio\Geslab\Etiquetas\Paquete\setup.exe
+File2=Z:\Compartida\Proyectos\Huesna\Laboratorio\Geslab\Etiquetas\Paquete\Setup.Lst
+File3=Z:\Compartida\Proyectos\Huesna\Laboratorio\Geslab\Etiquetas\Paquete\Etiquetas.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

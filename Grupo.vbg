@@ -1,0 +1,5 @@
+VBGROUP 5.0
+StartupProject=Geslab.vbp
+Project=PDFGenerator\PDF.vbp
+Project=PDFGenerator\PDFGen.vbp
+Project=Ocx\miCombo\miCombo.vbp

@@ -1,0 +1,8 @@
+frmInformes = 66, 64, 1188, 706, , 44, 44, 1166, 818, C
+BD = 66, 66, 818, 387, 
+Correo = 66, 66, 818, 387, 
+Ini = 0, 0, 0, 0, C
+frmReport = 154, 154, 921, 491, , 22, 22, 1144, 662, C
+clsMetrohm_analisis = 132, 132, 1210, 686, Z
+clsMetrohm = 154, 154, 1232, 708, 
+clsMetrohm_formato = 0, 0, 1231, 554, 

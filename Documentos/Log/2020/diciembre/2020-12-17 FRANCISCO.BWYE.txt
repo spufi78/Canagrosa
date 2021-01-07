@@ -1,0 +1,24 @@
+17/12/2020;09:00:59;DES-JGM;UPDATE usuarios set USO = 'DES-JGM' where id_empleado=188
+17/12/2020;09:01:00;DES-JGM;SET GLOBAL group_concat_max_len = 1000000
+17/12/2020;09:01:01;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:01;DES-JGM;frmErrores
+17/12/2020;09:01:01;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:01;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 20 order by DESCRIPCION
+17/12/2020;09:01:02;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+17/12/2020;09:01:02;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 21 order by DESCRIPCION
+17/12/2020;09:01:02;DES-JGM;SELECT E.ID,E.FECHA_ALTA,D1.DESCRIPCION,D2.DESCRIPCION,E.ERROR,E.TEXTO,U.USUARIO,E.CORREGIDO,E.FECHA_CORRECCION,E.PRIORIDAD_ID,E.TIPO_ID   FROM errores E, usuarios U,decodificadora D1, decodificadora D2  WHERE E.EMPLEADO_ID = U.ID_EMPLEADO    AND D1.CODIGO = 20   AND E.PRIORIDAD_ID = D1.VALOR    AND D2.CODIGO = 21   AND E.TIPO_ID = D2.VALOR    AND E.ERROR LIKE '%%' AND E.EMPLEADO_ID = 188 AND E.CORREGIDO = 0 ORDER BY E.ID DESC
+17/12/2020;09:01:03;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:03;DES-JGM;frmCambioUsuario
+17/12/2020;09:01:03;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:03;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:03;DES-JGM;frmTareas_Incurrir
+17/12/2020;09:01:03;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:03;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 16 order by DESCRIPCION
+17/12/2020;09:01:03;DES-JGM;SELECT VALOR,DESCRIPCION FROM decodificadora WHERE CODIGO = 17 order by DESCRIPCION
+17/12/2020;09:01:04;DES-JGM;SELECT ID_EMPLEADO, concat(NOMBRE,' ',APELLIDOS) FROM usuarios  WHERE ANULADO = 0  ORDER BY 2
+17/12/2020;09:01:04;DES-JGM;SELECT B.DESCRIPCION,A.OBSERVACIONES,A.HORAS,A.ID,E.DESCRIPCION,A.FACTURABLE  FROM tareas_incurridos A, tareas B,decodificadora E  WHERE FECHA = '2020-12-17'    AND E.CODIGO = 17   AND E.VALOR = A.TIPO_HORA    AND A.USUARIO_ID = 188   AND A.TAREA_ID = B.ID_TAREA  ORDER BY USUARIO_ID
+17/12/2020;09:01:05;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:05;DES-JGM;frmTelefonos
+17/12/2020;09:01:05;DES-JGM;---------------------------------------------------------------------------
+17/12/2020;09:01:05;DES-JGM;SELECT * FROM decodificadora  WHERE CODIGO = 150   AND VALOR <> 0  ORDER BY VALOR
+17/12/2020;09:01:55;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =188

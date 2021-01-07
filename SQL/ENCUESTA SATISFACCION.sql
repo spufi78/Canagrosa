@@ -1,0 +1,1 @@
+select replace(firstname,'(DUPLICADO)','') as firstname,lastname,email from emails where tipo = 0

@@ -1,0 +1,7 @@
+select c.FAMILIA_ID , d.NOMBRE, sum(a.BI)
+ from proveedores_facturas a, proveedores b, proveedores_facturas_fam c, familias d
+where a.PROVEEDOR_ID  = b.ID_PROVEEDOR 
+  and a.ID = c.FACTURA_ID 
+  and c.FAMILIA_ID = d.ID_FAMILIA 
+  and year(a.FECHA) = 2015
+group by c.FAMILIA_ID

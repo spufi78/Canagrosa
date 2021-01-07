@@ -1,0 +1,333 @@
+[Root]
+Most Recent Package=Paquete de instalación estándar 1
+
+
+[Package|Paquete de instalación estándar 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=Z:\Proyectos\Canagrosa_Recursos\Paquete
+
+[Package|Paquete de instalación estándar 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Paquete de instalación estándar 1|Files Found]
+
+[Package|Paquete de instalación estándar 1|Files Released]
+u2dpost.dll=
+u2fxml.dll=
+u2fsepv.dll=
+
+[Package|Paquete de instalación estándar 1|Missing Dependency Information]
+C:\WINDOWS\system32\Codejock.ReportControl.v13.2.1.ocx=
+C:\WINDOWS\system32\ButtonBar.ocx=
+C:\WINDOWS\system32\SmartMenuXP.ocx=
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa\Ocx\miCombo\miCombo.ocx=
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa\GeslabMSO.dll=
+C:\WINDOWS\system32\wmp.dll=
+C:\Archivos de programa\Microsoft Office\OFFICE11\GRAPH.EXE=
+C:\WINDOWS\system32\msxml6.dll=
+C:\WINDOWS\system32\Conversor.dll=
+C:\WINDOWS\system32\CaptureWindow.dll=
+C:\WINDOWS\system32\AcroPDF.dll=
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=
+C:\WINDOWS\system32\BarcodeWiz.dll=
+C:\Archivos de programa\Microsoft Office\Office12\MSOUTL.OLB=
+C:\WINDOWS\system32\cdosys.dll=
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=
+C:\Archivos de programa\Microsoft Office\Office12\MSWORD.OLB=
+C:\WINDOWS\system32\odbcconf.dll=
+C:\WINDOWS\system32\msscript.ocx=
+C:\WINDOWS\system32\DIjpg.dll=
+C:\WINDOWS\system32\ieframe.dll=
+\\vmware-host\Shared Folders\Compartida\Proyectos\Documentacion\MSOlink\GeslabMSO.dll=
+\\vmware-host\Shared Folders\Proyectos\Canagrosa\Ocx\miCombo.ocx=
+\\vmware-host\Shared Folders\Proyectos\Canagrosa\GeslabMSO.dll=
+\\vmware-host\Shared Folders\Proyectos\Canagrosa_Recursos\Ocx\craxdrt.dll=
+\\vmware-host\Shared Folders\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=
+C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550\GdiPlus.dll=
+C:\WINDOWS\system32\wininet.dll=
+
+[Package|Paquete de instalación estándar 1|Out-of-Date Dependency Information]
+C:\WINDOWS\system32\MCI32.OCX=
+C:\WINDOWS\system32\tdbgpp8.dll=
+C:\WINDOWS\system32\MSCOMCTL.OCX=
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\craxdrt.dll=
+C:\WINDOWS\system32\scrrun.dll=
+
+[Package|Paquete de instalación estándar 1|Files Added]
+
+[Package|Paquete de instalación estándar 1|Files Removed]
+
+[Package|Paquete de instalación estándar 1|Files In Project]
+C:\geslab.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\VB6ES.DLL=Yes
+C:\WINDOWS\system32\odbccp32.dll=Yes
+C:\WINDOWS\system32\DIjpg.dll=Yes
+C:\WINDOWS\system32\MSDBRPTR.DLL=Yes
+C:\WINDOWS\system32\MSSTDFMT.DLL=Yes
+C:\WINDOWS\system32\STDFTES.DLL=Yes
+C:\WINDOWS\system32\DBRPRES.DLL=Yes
+C:\WINDOWS\system32\msscript.ocx=Yes
+C:\WINDOWS\system32\odbcconf.dll=Yes
+C:\Archivos de programa\Archivos comunes\Microsoft Shared\DAO\dao360.dll=Yes
+C:\WINDOWS\system32\msjet40.dll=Yes
+C:\WINDOWS\system32\msjter40.dll=Yes
+C:\WINDOWS\system32\msjint40.dll=Yes
+C:\WINDOWS\system32\vbajet32.dll=Yes
+C:\WINDOWS\system32\expsrv.dll=Yes
+C:\WINDOWS\system32\mswstr10.dll=Yes
+C:\WINDOWS\system32\mswdat10.dll=Yes
+C:\WINDOWS\system32\msrd2x40.dll=Yes
+C:\WINDOWS\system32\msrd3x40.dll=Yes
+C:\WINDOWS\system32\msrepl40.dll=Yes
+C:\WINDOWS\system32\msjtes40.dll=Yes
+C:\WINDOWS\system32\VB5DB.DLL=Yes
+C:\Archivos de programa\Microsoft Office\Office12\MSWORD.OLB=Yes
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=Yes
+C:\WINDOWS\system32\scrrun.dll=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=Yes
+C:\WINDOWS\system32\scrrnes.dll=Yes
+C:\WINDOWS\system32\cdosys.dll=Yes
+C:\Archivos de programa\Microsoft Office\Office12\MSOUTL.OLB=Yes
+C:\WINDOWS\system32\BarcodeWiz.dll=Yes
+C:\WINDOWS\system32\xadb8.ocx=Yes
+C:\WINDOWS\system32\tidate8.ocx=Yes
+C:\WINDOWS\system32\tishare8.dll=Yes
+C:\WINDOWS\system32\tibase8.dll=Yes
+C:\Archivos de programa\Archivos comunes\System\ado\msadox.dll=Yes
+C:\WINDOWS\system32\AcroPDF.dll=Yes
+C:\WINDOWS\system32\CaptureWindow.dll=Yes
+C:\WINDOWS\system32\Conversor.dll=Yes
+C:\WINDOWS\system32\msxml6.dll=Yes
+C:\Archivos de programa\Microsoft Office\OFFICE11\GRAPH.EXE=Yes
+C:\WINDOWS\system32\wmp.dll=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\MSCMCES.DLL=Yes
+C:\WINDOWS\system32\MSDATLST.OCX=Yes
+C:\WINDOWS\system32\DATLSES.DLL=Yes
+C:\WINDOWS\system32\MSCOMCT2.OCX=Yes
+C:\WINDOWS\system32\MSCC2ES.DLL=Yes
+C:\WINDOWS\system32\MSFLXGRD.OCX=Yes
+C:\WINDOWS\system32\FLXGDES.DLL=Yes
+C:\WINDOWS\system32\RICHTX32.OCX=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=Yes
+C:\WINDOWS\system32\RCHTXES.DLL=Yes
+C:\WINDOWS\system32\MSCHRT20.OCX=Yes
+C:\WINDOWS\system32\MSCH2ES.DLL=Yes
+C:\WINDOWS\system32\MSWINSCK.OCX=Yes
+C:\WINDOWS\system32\WINSKES.DLL=Yes
+C:\WINDOWS\system32\comdlg32.ocx=Yes
+C:\WINDOWS\system32\CMDLGES.DLL=Yes
+C:\WINDOWS\system32\MSCOMM32.OCX=Yes
+C:\WINDOWS\system32\MSCOMES.DLL=Yes
+C:\WINDOWS\system32\tdbg8.ocx=Yes
+C:\WINDOWS\system32\tdbgpp8.dll=Yes
+C:\WINDOWS\system32\SmartMenuXP.ocx=Yes
+C:\WINDOWS\system32\ButtonBar.ocx=Yes
+C:\WINDOWS\system32\TABCTL32.OCX=Yes
+C:\WINDOWS\system32\TABCTES.DLL=Yes
+C:\WINDOWS\system32\Codejock.ReportControl.v13.2.1.ocx=Yes
+C:\WINDOWS\system32\Codejock.Controls.v13.2.1.ocx=Yes
+C:\WINDOWS\system32\MCI32.OCX=Yes
+C:\WINDOWS\system32\MCIES.DLL=Yes
+C:\WINDOWS\system32\Codejock.Calendar.v13.2.1.ocx=Yes
+C:\WINDOWS\system32\Codejock.CommandBars.v13.2.1.ocx=Yes
+C:\WINDOWS\system32\MSMASK32.OCX=Yes
+C:\WINDOWS\system32\MSMSKES.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\WINDOWS\system32\ieframe.dll=Yes
+C:\WINDOWS\system32\wininet.dll=Yes
+C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550\GdiPlus.dll=Yes
+\\vmware-host\Shared Folders\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=Yes
+\\vmware-host\Shared Folders\Proyectos\Canagrosa_Recursos\Ocx\craxdrt.dll=Yes
+\\vmware-host\Shared Folders\Proyectos\Canagrosa\GeslabMSO.dll=Yes
+\\vmware-host\Shared Folders\Proyectos\Canagrosa\Ocx\miCombo.ocx=Yes
+
+[Package|Paquete de instalación estándar 1|Configure Registry Files]
+Applicable=No
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdeploy.reg=Register
+
+[Package|Paquete de instalación estándar 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Install Locations]
+C:\geslab.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB6ES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\odbccp32.dll=$(WinSysPath)
+C:\WINDOWS\system32\DIjpg.dll=$(WinSysPath)
+C:\WINDOWS\system32\MSDBRPTR.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+C:\WINDOWS\system32\STDFTES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\DBRPRES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\msscript.ocx=$(WinSysPath)
+C:\WINDOWS\system32\odbcconf.dll=$(AppPath)
+C:\Archivos de programa\Archivos comunes\Microsoft Shared\DAO\dao360.dll=$(MSDAOPath)
+C:\WINDOWS\system32\msjet40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjter40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjint40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\vbajet32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\expsrv.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswstr10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\mswdat10.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd2x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrd3x40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msrepl40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msjtes40.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\VB5DB.DLL=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\Office12\MSWORD.OLB=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=$(AppPath)
+C:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\scrrnes.dll=$(WinSysPath)
+C:\WINDOWS\system32\cdosys.dll=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\Office12\MSOUTL.OLB=$(WinSysPath)
+C:\WINDOWS\system32\BarcodeWiz.dll=$(WinSysPath)
+C:\WINDOWS\system32\xadb8.ocx=$(WinSysPath)
+C:\WINDOWS\system32\tidate8.ocx=$(WinSysPath)
+C:\WINDOWS\system32\tishare8.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\tibase8.dll=$(WinSysPathSysFile)
+C:\Archivos de programa\Archivos comunes\System\ado\msadox.dll=$(WinSysPath)
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\craxdrt.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\WINDOWS\system32\cslibu-2-0-0.dll=$(WinSysPath)
+C:\WINDOWS\system32\msvcr71.dll=$(WinSysPath)
+C:\WINDOWS\system32\mfc71u.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crtowords_en.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ufmanager.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2l2000.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lcom.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ldts.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lexch.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2lfinra.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u252000.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u25dts.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u25samp1.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\Implode.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crqe.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_ado.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_dao.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crdb_odbc.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\WINDOWS\system32\cxlibw-2-6.dll=$(WinSysPath)
+C:\WINDOWS\system32\libOCASecurityw-1-6.dll=$(WinSysPath)
+C:\WINDOWS\system32\ebus-3-3-2-4.dll=$(WinSysPath)
+C:\WINDOWS\system32\libOCAHelperw-2-13.dll=$(WinSysPath)
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\querybuilder.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\sscsdk80.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_rtf.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ExportModeller.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crtslv.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_wordw.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_xls.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\crxf_pdf.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2fcr.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ftext.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2ddisk.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\u2dapp.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\keycode.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\saxserialize.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\saxmlserialize.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\sacommlayer.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\prompt.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\ParameterDesigner.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\Archivos de programa\Archivos comunes\Business Objects\3.0\bin\xerces-c_2_1_0.dll=$(CommonFiles)\Business Objects\3.0\bin
+C:\WINDOWS\system32\atl71.dll=$(WinSysPath)
+C:\WINDOWS\system32\etc-1-0-12-3.dll=$(WinSysPath)
+C:\WINDOWS\system32\MSVCP71.dll=$(WinSysPath)
+C:\WINDOWS\system32\fssl-1-2-1-1.dll=$(WinSysPath)
+C:\WINDOWS\system32\AcroPDF.dll=$(WinSysPath)
+C:\WINDOWS\system32\CaptureWindow.dll=$(WinSysPath)
+C:\WINDOWS\system32\Conversor.dll=$(WinSysPath)
+C:\WINDOWS\system32\msxml6.dll=$(WinSysPath)
+C:\Archivos de programa\Microsoft Office\OFFICE11\GRAPH.EXE=$(AppPath)
+C:\WINDOWS\system32\wmp.dll=$(AppPath)
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa\GeslabMSO.dll=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCMCES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSDATLST.OCX=$(WinSysPath)
+C:\WINDOWS\system32\DATLSES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCC2ES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\FLXGDES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\RICHTX32.OCX=$(WinSysPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\RCHTXES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCH2ES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSWINSCK.OCX=$(WinSysPath)
+C:\WINDOWS\system32\WINSKES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\comdlg32.ocx=$(WinSysPath)
+C:\WINDOWS\system32\CMDLGES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMES.DLL=$(WinSysPath)
+\\vmware-host\Shared Folders\Compartida\Proyectos\Canagrosa\Ocx\miCombo\miCombo.ocx=$(WinSysPath)
+C:\WINDOWS\system32\tdbg8.ocx=$(WinSysPath)
+C:\WINDOWS\system32\tdbgpp8.dll=$(WinSysPath)
+C:\WINDOWS\system32\SmartMenuXP.ocx=$(WinSysPath)
+C:\WINDOWS\system32\ButtonBar.ocx=$(WinSysPath)
+C:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\Codejock.ReportControl.v13.2.1.ocx=$(WinSysPath)
+C:\WINDOWS\system32\Codejock.Controls.v13.2.1.ocx=$(WinSysPath)
+C:\WINDOWS\system32\MCI32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MCIES.DLL=$(WinSysPath)
+C:\WINDOWS\system32\Codejock.Calendar.v13.2.1.ocx=$(WinSysPath)
+C:\WINDOWS\system32\Codejock.CommandBars.v13.2.1.ocx=$(WinSysPath)
+C:\WINDOWS\system32\MSMASK32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSMSKES.DLL=$(WinSysPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+\\vmware-host\Shared Folders\Compartida\Proyectos\Documentacion\MSOlink\GeslabMSO.dll=$(WinSysPath)
+C:\WINDOWS\system32\ieframe.dll=$(WinSysPath)
+C:\WINDOWS\system32\wininet.dll=$(WinSysPath)
+C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550\GdiPlus.dll=$(WinSysPath)
+\\vmware-host\Shared Folders\Proyectos\Canagrosa_Recursos\Ocx\crviewer.dll=$(WinSysPath)
+\\vmware-host\Shared Folders\Proyectos\Canagrosa_Recursos\Ocx\craxdrt.dll=$(WinSysPath)
+\\vmware-host\Shared Folders\Proyectos\Canagrosa\GeslabMSO.dll=$(WinSysPath)
+\\vmware-host\Shared Folders\Proyectos\Canagrosa\Ocx\miCombo.ocx=$(WinSysPath)
+
+[Package|Paquete de instalación estándar 1|Configure Shared Files]
+Applicable=Yes
+C:\geslab.exe=No
+C:\WINDOWS\system32\odbcconf.dll=No
+C:\Archivos de programa\Microsoft Office\Office12\EXCEL.EXE=No
+C:\Archivos de programa\Microsoft Office\OFFICE11\GRAPH.EXE=No
+C:\WINDOWS\system32\wmp.dll=No
+C:\Archivos de programa\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+
+[Package|Paquete de instalación estándar 1|Distribution]
+Type=single
+Size=
+Title=Geslab - Gestión de laboratorios
+
+[Package|Paquete de instalación estándar 1|Package]
+PackageFolder=Z:\Proyectos\Canagrosa_Recursos\Paquete
+ProjectFolder=Z:\Proyectos\Canagrosa
+ServerSideCab=
+File1=Z:\Proyectos\Canagrosa_Recursos\Paquete\setup.exe
+File2=Z:\Proyectos\Canagrosa_Recursos\Paquete\Setup.Lst
+File3=Z:\Proyectos\Canagrosa_Recursos\Paquete\geslab.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

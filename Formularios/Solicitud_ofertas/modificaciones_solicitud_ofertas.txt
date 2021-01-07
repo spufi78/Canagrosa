@@ -1,0 +1,12 @@
+
+insert into decodificadora(CODIGO, IDIOMA, VALOR, DESCRIPCION, PARAMETROS) VALUES 
+(0, 'ES', 114, 'Tipos de Solicitud de Oferta',''), 
+(114, 'ES', 0, '',''), 
+(114, 'ES', 1, 'Equipo',''), 
+(114, 'ES', 2, 'Calibración',''), 
+(114, 'ES', 3, 'Patrones',''),
+(114, 'ES', 4, 'Reactivos',''), 
+(114, 'ES', 5, 'Productos Controlados',''),
+(114, 'ES', 6, 'Material Oficina',''), 
+(114, 'ES', 7, 'Fungibles',''),
+(114, 'ES', 8, 'Estructurales','');

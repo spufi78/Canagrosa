@@ -1,0 +1,4 @@
+22/12/2020;00:00:21;DES-JGM;SELECT * FROM usuarios WHERE ID_EMPLEADO =18
+22/12/2020;00:00:21;DES-JGM;SELECT A.ID_FIRMA,C.NOMBRE,B.DESCRIPCION, IF(A.TOBJETO<>29, D.DESCRIPCION,E.NOMBRE)   FROM firmas A   LEFT JOIN decodificadora B ON B.CODIGO = 500 AND A.TOBJETO = B.VALOR   LEFT JOIN empleados C ON A.USUARIO_ID = C.ID_EMPLEADO   LEFT JOIN formacion_cursos D ON A.COBJETO = D.ID_CURSO   LEFT JOIN ca_documentos E ON A.COBJETO = E.ID_DOCUMENTO  WHERE FIRMADA=0   AND A.USUARIO_ID=85 ORDER BY A.ID_FIRMA 
+22/12/2020;00:00:22;DES-JGM;select procnc_accionescorrectivas.*, concat(usuarios.NOMBRE, ' ', usuarios.APELLIDOS) as RESPONSABLE From procnc_accionescorrectivas inner join usuarios on procnc_accionescorrectivas.responsable_id = usuarios.ID_EMPLEADO where 1 = 1    and procnc_accionescorrectivas.estado_id <= 3 order by procnc_accionescorrectivas.FECHA_PREVISTA
+22/12/2020;08:56:29;DES-JGM;UPDATE usuarios SET  USO = '' WHERE ID_EMPLEADO = 18

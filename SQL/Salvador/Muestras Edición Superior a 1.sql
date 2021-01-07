@@ -1,0 +1,10 @@
+SELECT a.ANNO,d.NOMBRE AS TIPO_MUESTRA, b.NOMBRE AS CLIENTE
+	   ,if (a.OP_INSITU=0,'S','N') AS IN_SITU
+      ,COUNT(*) AS CANTIDAD,sum(a.PRECIO) AS IMPORTE
+from muestras a
+INNER join clientes b ON a.CLIENTE_ID = b.ID_CLIENTE 
+INNER join tipos_muestra d ON a.TIPO_MUESTRA_ID = d.ID_TIPO_MUESTRA
+WHERE a.ANULADA = 0 AND a.ANNO <> 0
+and a.ULT_EDICION_IMP > 1
+and a.ANNO in (2019,2020)
+group by 1,2,3,4

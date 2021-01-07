@@ -1,0 +1,813 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+  Persistable = 0  'NotPersistable
+  DataBindingBehavior = 0  'vbNone
+  DataSourceBehavior  = 0  'vbNone
+  MTSTransactionMode  = 0  'NotAnMTSObject
+END
+Attribute VB_Name = "clsEquipos"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+Option Explicit
+'***************************************************************
+'*   VARIABLES DE INSTANCIA DE LA CLASE CLSEQUIPOS
+'***************************************************************
+Private ID_EQUIPO As Long
+Private NOMBRE As String
+Private CONDICIONES_AMBIENTALES As Long
+Private PROVEEDOR_ID As Integer
+Private FECHA_RECEPCION As String
+Private FECHA_SERVICIO As String
+Private ALTA_BAJA As Integer
+Private SERIE As String
+Private NOTAS As String
+Private FAMILIA_ID As Integer
+Private MODELO As String
+Private FABRICANTE As String
+Private ES_NADCAP As Integer
+Private RANGO_MEDIDA_MIN As String
+Private RANGO_MEDIDA_MAX As String
+Private UNIDAD_ID As Integer
+Private TOLERANCIA_MAXIMA As String
+Private INCERTIDUMBRE_MAXIMA As String
+Private PRECISIONN As String
+Private TEMPERATURA_MIN As String
+Private TEMPERATURA_MAX As String
+Private HUMEDAD_MIN As String
+Private HUMEDAD_MAX As String
+Private COND_AMBIENTALES_OTRAS As String
+Private RANGO_TRABAJO_MIN As String
+Private RANGO_TRABAJO_MAX As String
+Private LIMITACIONES_USO As String
+Private PERIODICIDAD_CALIBRACION_ID As Integer
+Private FECHA_PROX_CALIBRACION As String
+Private PERIODICIDAD_VERIFICACION_ID As Integer
+Private FECHA_PROX_VERIFICACION As String
+Private PERIODICIDAD_MANTENIMIENTO_ID As Integer
+Private FECHA_PROX_MANTENIMIENTO As String
+Private TIPO_CALIBRACION_ID As Integer
+Private CALIBRADOR_ID As Integer
+Private CALIBRADOR_INTERNO_ID As Integer
+Private SITUACION_ID As Integer
+Private CON_CALIBRACION As Integer
+Private CON_VERIFICACION As Integer
+Private CON_MANTENIMIENTO As Integer
+Private REVISADO As Integer
+
+'***************************************************************
+'*   PROPIEDADES DE ESCRITURA DE LA CLASE CLSEQUIPOS
+'***************************************************************
+Public Property Let setID_EQUIPO(ByVal dato As Long)
+        ID_EQUIPO = dato
+End Property
+Public Property Let setNOMBRE(ByVal dato As String)
+        NOMBRE = dato
+End Property
+Public Property Let setCONDICIONES_AMBIENTALES(ByVal dato As Long)
+        CONDICIONES_AMBIENTALES = dato
+End Property
+Public Property Let setPROVEEDOR_ID(ByVal dato As Integer)
+        PROVEEDOR_ID = dato
+End Property
+Public Property Let setFECHA_RECEPCION(ByVal dato As String)
+        FECHA_RECEPCION = dato
+End Property
+Public Property Let setFECHA_SERVICIO(ByVal dato As String)
+        FECHA_SERVICIO = dato
+End Property
+Public Property Let setALTA_BAJA(ByVal dato As Integer)
+        ALTA_BAJA = dato
+End Property
+Public Property Let setSERIE(ByVal dato As String)
+        SERIE = dato
+End Property
+Public Property Let setNOTAS(ByVal dato As String)
+        NOTAS = dato
+End Property
+Public Property Let setFAMILIA_ID(ByVal dato As String)
+        FAMILIA_ID = dato
+End Property
+Public Property Let setMODELO(ByVal dato As String)
+        MODELO = dato
+End Property
+Public Property Let setFABRICANTE(ByVal dato As String)
+        FABRICANTE = dato
+End Property
+Public Property Let setES_NADCAP(ByVal dato As String)
+        ES_NADCAP = dato
+End Property
+Public Property Let setRANGO_MEDIDA_MIN(ByVal dato As String)
+        RANGO_MEDIDA_MIN = dato
+End Property
+Public Property Let setRANGO_MEDIDA_MAX(ByVal dato As String)
+        RANGO_MEDIDA_MAX = dato
+End Property
+Public Property Let setUNIDAD_ID(ByVal dato As String)
+        UNIDAD_ID = dato
+End Property
+Public Property Let setTOLERANCIA_MAXIMA(ByVal dato As String)
+        TOLERANCIA_MAXIMA = dato
+End Property
+Public Property Let setINCERTIDUMBRE_MAXIMA(ByVal dato As String)
+        INCERTIDUMBRE_MAXIMA = dato
+End Property
+Public Property Let setPRECISIONN(ByVal dato As String)
+        PRECISIONN = dato
+End Property
+Public Property Let setTEMPERATURA_MIN(ByVal dato As String)
+        TEMPERATURA_MIN = dato
+End Property
+Public Property Let setTEMPERATURA_MAX(ByVal dato As String)
+        TEMPERATURA_MAX = dato
+End Property
+Public Property Let setHUMEDAD_MIN(ByVal dato As String)
+        HUMEDAD_MIN = dato
+End Property
+Public Property Let setHUMEDAD_MAX(ByVal dato As String)
+        HUMEDAD_MAX = dato
+End Property
+Public Property Let setCOND_AMBIENTALES_OTRAS(ByVal dato As String)
+        COND_AMBIENTALES_OTRAS = dato
+End Property
+Public Property Let setRANGO_TRABAJO_MIN(ByVal dato As String)
+        RANGO_TRABAJO_MIN = dato
+End Property
+Public Property Let setRANGO_TRABAJO_MAX(ByVal dato As String)
+        RANGO_TRABAJO_MAX = dato
+End Property
+Public Property Let setLIMITACIONES_USO(ByVal dato As String)
+        LIMITACIONES_USO = dato
+End Property
+Public Property Let setPERIODICIDAD_CALIBRACION_ID(ByVal dato As String)
+        PERIODICIDAD_CALIBRACION_ID = dato
+End Property
+Public Property Let setFECHA_PROX_CALIBRACION(ByVal dato As String)
+        FECHA_PROX_CALIBRACION = dato
+End Property
+Public Property Let setPERIODICIDAD_VERIFICACION_ID(ByVal dato As String)
+        PERIODICIDAD_VERIFICACION_ID = dato
+End Property
+Public Property Let setFECHA_PROX_VERIFICACION(ByVal dato As String)
+        FECHA_PROX_VERIFICACION = dato
+End Property
+Public Property Let setPERIODICIDAD_MANTENIMIENTO_ID(ByVal dato As String)
+        PERIODICIDAD_MANTENIMIENTO_ID = dato
+End Property
+Public Property Let setFECHA_PROX_MANTENIMIENTO(ByVal dato As String)
+        FECHA_PROX_MANTENIMIENTO = dato
+End Property
+Public Property Let setTIPO_CALIBRACION_ID(ByVal dato As Integer)
+        TIPO_CALIBRACION_ID = dato
+End Property
+Public Property Let setCALIBRADOR_ID(ByVal dato As Integer)
+        CALIBRADOR_ID = dato
+End Property
+Public Property Let setCALIBRADOR_INTERNO_ID(ByVal dato As Integer)
+        CALIBRADOR_INTERNO_ID = dato
+End Property
+Public Property Let setSITUACION_ID(ByVal dato As String)
+        SITUACION_ID = dato
+End Property
+Public Property Let setCON_VERIFICACION(ByVal dato As Integer)
+        CON_VERIFICACION = dato
+End Property
+Public Property Let setCON_CALIBRACION(ByVal dato As Integer)
+        CON_CALIBRACION = dato
+End Property
+Public Property Let setCON_MANTENIMIENTO(ByVal dato As Integer)
+        CON_MANTENIMIENTO = dato
+End Property
+Public Property Let setREVISADO(ByVal dato As String)
+        REVISADO = dato
+End Property
+
+'***************************************************************
+'*   PROPIEDADES DE LECTURA DE LA CLASE CLSEQUIPOS
+'***************************************************************
+Public Property Get getID_EQUIPO() As Long
+        getID_EQUIPO = ID_EQUIPO
+End Property
+Public Property Get getNOMBRE() As String
+        getNOMBRE = NOMBRE
+End Property
+Public Property Get getCONDICIONES_AMBIENTALES() As Long
+        getCONDICIONES_AMBIENTALES = CONDICIONES_AMBIENTALES
+End Property
+Public Property Get getPROVEEDOR_ID() As Integer
+        getPROVEEDOR_ID = PROVEEDOR_ID
+End Property
+Public Property Get getFECHA_RECEPCION() As String
+        getFECHA_RECEPCION = FECHA_RECEPCION
+End Property
+Public Property Get getFECHA_SERVICIO() As String
+        getFECHA_SERVICIO = FECHA_SERVICIO
+End Property
+Public Property Get getALTA_BAJA() As Integer
+        getALTA_BAJA = ALTA_BAJA
+End Property
+Public Property Get getSERIE() As String
+        getSERIE = SERIE
+End Property
+Public Property Get getNOTAS() As String
+        getNOTAS = NOTAS
+End Property
+Public Property Get getFAMILIA_ID() As Integer
+        getFAMILIA_ID = FAMILIA_ID
+End Property
+Public Property Get getMODELO() As String
+        getMODELO = MODELO
+End Property
+Public Property Get getFABRICANTE() As String
+        getFABRICANTE = FABRICANTE
+End Property
+Public Property Get getES_NADCAP() As Integer
+        getES_NADCAP = ES_NADCAP
+End Property
+Public Property Get getRANGO_MEDIDA_MIN() As String
+        getRANGO_MEDIDA_MIN = RANGO_MEDIDA_MIN
+End Property
+Public Property Get getRANGO_MEDIDA_MAX() As String
+        getRANGO_MEDIDA_MAX = RANGO_MEDIDA_MAX
+End Property
+Public Property Get getUNIDAD_ID() As Integer
+        getUNIDAD_ID = UNIDAD_ID
+End Property
+Public Property Get getTOLERANCIA_MAXIMA() As String
+        getTOLERANCIA_MAXIMA = TOLERANCIA_MAXIMA
+End Property
+Public Property Get getINCERTIDUMBRE_MAXIMA() As String
+        getINCERTIDUMBRE_MAXIMA = INCERTIDUMBRE_MAXIMA
+End Property
+Public Property Get getPRECISIONN() As String
+        getPRECISIONN = PRECISIONN
+End Property
+Public Property Get getTEMPERATURA_MIN() As String
+        getTEMPERATURA_MIN = TEMPERATURA_MIN
+End Property
+Public Property Get getTEMPERATURA_MAX() As String
+        getTEMPERATURA_MAX = TEMPERATURA_MAX
+End Property
+Public Property Get getHUMEDAD_MIN() As String
+        getHUMEDAD_MIN = HUMEDAD_MIN
+End Property
+Public Property Get getHUMEDAD_MAX() As String
+        getHUMEDAD_MAX = HUMEDAD_MAX
+End Property
+Public Property Get getCOND_AMBIENTALES_OTRAS() As String
+        getCOND_AMBIENTALES_OTRAS = COND_AMBIENTALES_OTRAS
+End Property
+Public Property Get getRANGO_TRABAJO_MIN() As String
+        getRANGO_TRABAJO_MIN = RANGO_TRABAJO_MIN
+End Property
+Public Property Get getRANGO_TRABAJO_MAX() As String
+        getRANGO_TRABAJO_MAX = RANGO_TRABAJO_MAX
+End Property
+Public Property Get getLIMITACIONES_USO() As String
+        getLIMITACIONES_USO = LIMITACIONES_USO
+End Property
+Public Property Get getPERIODICIDAD_CALIBRACION_ID() As Integer
+        getPERIODICIDAD_CALIBRACION_ID = PERIODICIDAD_CALIBRACION_ID
+End Property
+Public Property Get getFECHA_PROX_CALIBRACION() As String
+        getFECHA_PROX_CALIBRACION = FECHA_PROX_CALIBRACION
+End Property
+Public Property Get getPERIODICIDAD_VERIFICACION_ID() As Integer
+        getPERIODICIDAD_VERIFICACION_ID = PERIODICIDAD_VERIFICACION_ID
+End Property
+Public Property Get getFECHA_PROX_VERIFICACION() As String
+        getFECHA_PROX_VERIFICACION = FECHA_PROX_VERIFICACION
+End Property
+Public Property Get getPERIODICIDAD_MANTENIMIENTO_ID() As Integer
+        getPERIODICIDAD_MANTENIMIENTO_ID = PERIODICIDAD_MANTENIMIENTO_ID
+End Property
+Public Property Get getFECHA_PROX_MANTENIMIENTO() As String
+        getFECHA_PROX_MANTENIMIENTO = FECHA_PROX_MANTENIMIENTO
+End Property
+Public Property Get getTIPO_CALIBRACION_ID() As Integer
+        getTIPO_CALIBRACION_ID = TIPO_CALIBRACION_ID
+End Property
+Public Property Get getCALIBRADOR_ID() As Integer
+        getCALIBRADOR_ID = CALIBRADOR_ID
+End Property
+Public Property Get getCALIBRADOR_INTERNO_ID() As Integer
+        getCALIBRADOR_INTERNO_ID = CALIBRADOR_INTERNO_ID
+End Property
+Public Property Get getSITUACION_ID() As Integer
+        getSITUACION_ID = SITUACION_ID
+End Property
+Public Property Get getCON_CALIBRACION() As Integer
+        getCON_CALIBRACION = CON_CALIBRACION
+End Property
+Public Property Get getCON_VERIFICACION() As Integer
+        getCON_VERIFICACION = CON_VERIFICACION
+End Property
+Public Property Get getCON_MANTENIMIENTO() As Integer
+        getCON_MANTENIMIENTO = CON_MANTENIMIENTO
+End Property
+Public Property Get getREVISADO() As Integer
+        getREVISADO = REVISADO
+End Property
+
+'***************************************************************
+'*   PROCEDIMIENTOS Y FUNCIONES DE LA CLASE CLSEQUIPOS
+'***************************************************************
+Public Function Carga(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim rs As ADODB.RecordSet
+        Dim consulta As String
+        consulta = "SELECT * FROM EQUIPOS WHERE ID_EQUIPO = " & ID
+        Set rs = datos_bd(consulta)
+        If rs.RecordCount = 0 Then
+                Carga = False
+        Else
+                ID_EQUIPO = rs("ID_EQUIPO")
+                NOMBRE = rs("NOMBRE")
+                CONDICIONES_AMBIENTALES = rs("CONDICIONES_AMBIENTALES")
+                PROVEEDOR_ID = rs("PROVEEDOR_ID")
+                FECHA_RECEPCION = rs("FECHA_RECEPCION")
+                FECHA_SERVICIO = rs("FECHA_SERVICIO")
+                ALTA_BAJA = rs("ALTA_BAJA")
+                SERIE = rs("SERIE")
+                FAMILIA_ID = rs("FAMILIA_ID")
+                MODELO = rs("MODELO")
+                FABRICANTE = rs("FABRICANTE")
+                ES_NADCAP = rs("ES_NADCAP")
+                RANGO_MEDIDA_MIN = rs("RANGO_MEDIDA_MIN")
+                RANGO_MEDIDA_MAX = rs("RANGO_MEDIDA_MAX")
+                UNIDAD_ID = rs("UNIDAD_ID")
+                TOLERANCIA_MAXIMA = rs("TOLERANCIA_MAXIMA")
+                INCERTIDUMBRE_MAXIMA = rs("INCERTIDUMBRE_MAXIMA")
+                PRECISIONN = rs("PRECISIONN")
+                TEMPERATURA_MIN = rs("TEMPERATURA_MIN")
+                TEMPERATURA_MAX = rs("TEMPERATURA_MAX")
+                HUMEDAD_MIN = rs("HUMEDAD_MIN")
+                HUMEDAD_MAX = rs("HUMEDAD_MAX")
+                COND_AMBIENTALES_OTRAS = rs("COND_AMBIENTALES_OTRAS")
+                RANGO_TRABAJO_MIN = rs("RANGO_TRABAJO_MIN")
+                RANGO_TRABAJO_MAX = rs("RANGO_TRABAJO_MAX")
+                LIMITACIONES_USO = rs("LIMITACIONES_USO")
+                PERIODICIDAD_CALIBRACION_ID = rs("PERIODICIDAD_CALIBRACION_ID")
+                FECHA_PROX_CALIBRACION = rs("FECHA_PROX_CALIBRACION")
+                PERIODICIDAD_VERIFICACION_ID = rs("PERIODICIDAD_VERIFICACION_ID")
+                FECHA_PROX_VERIFICACION = rs("FECHA_PROX_VERIFICACION")
+                PERIODICIDAD_MANTENIMIENTO_ID = rs("PERIODICIDAD_MANTENIMIENTO_ID")
+                FECHA_PROX_MANTENIMIENTO = rs("FECHA_PROX_MANTENIMIENTO")
+                SITUACION_ID = rs("SITUACION_ID")
+                TIPO_CALIBRACION_ID = rs("TIPO_CALIBRACION_ID")
+                CALIBRADOR_ID = rs("CALIBRADOR_ID")
+                CALIBRADOR_INTERNO_ID = rs("CALIBRADOR_INTERNO_ID")
+                CON_CALIBRACION = rs("CON_CALIBRACION")
+                CON_VERIFICACION = rs("CON_VERIFICACION")
+                CON_MANTENIMIENTO = rs("CON_MANTENIMIENTO")
+                REVISADO = rs("REVISADO")
+                NOTAS = rs("NOTAS")
+                
+                Carga = True
+        End If
+        Set rs = Nothing
+        Exit Function
+fallo:
+        Carga = False
+        MsgBox "Error al cargar los datos(clsEquipos)", vbCritical, Err.Description
+End Function
+Public Function CrearID()
+        Dim rs As ADODB.RecordSet
+        Dim consulta As String
+        consulta = "SELECT MAX(ID_EQUIPO) FROM EQUIPOS"
+        Set rs = datos_bd(consulta)
+        If IsNull(rs.Fields(0)) Or (rs.EOF And rs.BOF) Then
+                ID_EQUIPO = 1
+        Else
+                ID_EQUIPO = rs.Fields(0) + 1
+        End If
+        Set rs = Nothing
+End Function
+Public Function Insertar() As Long
+        On Error GoTo fallo
+        Dim consulta As String
+        
+        If ID_EQUIPO = 0 Then
+            Me.CrearID
+        End If
+        
+        consulta = "INSERT INTO EQUIPOS (" & _
+                    "ID_EQUIPO, NOMBRE, CONDICIONES_AMBIENTALES, " & _
+                    "PROVEEDOR_ID, FECHA_RECEPCION, FECHA_SERVICIO, ALTA_BAJA, " & _
+                    "SERIE, FAMILIA_ID, MODELO, FABRICANTE, ES_NADCAP, RANGO_MEDIDA_MIN, " & _
+                    "RANGO_MEDIDA_MAX, UNIDAD_ID, TOLERANCIA_MAXIMA, INCERTIDUMBRE_MAXIMA, PRECISIONN, " & _
+                    "TEMPERATURA_MIN, TEMPERATURA_MAX, HUMEDAD_MIN, HUMEDAD_MAX, COND_AMBIENTALES_OTRAS, " & _
+                    "RANGO_TRABAJO_MIN, RANGO_TRABAJO_MAX, LIMITACIONES_USO, PERIODICIDAD_CALIBRACION_ID, " & _
+                    "FECHA_PROX_CALIBRACION, PERIODICIDAD_VERIFICACION_ID, FECHA_PROX_VERIFICACION, " & _
+                    "PERIODICIDAD_MANTENIMIENTO_ID, FECHA_PROX_MANTENIMIENTO, SITUACION_ID, " & _
+                    "CON_CALIBRACION, CON_VERIFICACION, CON_MANTENIMIENTO, " & _
+                    "TIPO_CALIBRACION_ID, CALIBRADOR_ID, CALIBRADOR_INTERNO_ID, NOTAS, " & _
+                    "REVISADO, " & _
+                    "CUSERID, FTIMESTP "
+        
+        consulta = consulta & _
+                    ") VALUES (" & _
+                    ID_EQUIPO & "," & "'" & NOMBRE & "'" & "," & CONDICIONES_AMBIENTALES & "," & _
+                    PROVEEDOR_ID & "," & "'" & FECHA_RECEPCION & "'" & ", " & "'" & FECHA_SERVICIO & "'" & "," & ALTA_BAJA & "," & _
+                    "'" & SERIE & "'" & "," & _
+                    FAMILIA_ID & ", " & "'" & MODELO & "'" & ", " & "'" & FABRICANTE & "'" & ", " & ES_NADCAP & ", " & "'" & RANGO_MEDIDA_MIN & "'" & ", " & _
+                    "'" & RANGO_MEDIDA_MAX & "'" & ", " & UNIDAD_ID & ", " & "'" & TOLERANCIA_MAXIMA & "'" & ", " & "'" & INCERTIDUMBRE_MAXIMA & "'" & ", " & "'" & PRECISIONN & "'" & ", " & _
+                    "'" & TEMPERATURA_MIN & "'" & ", " & "'" & TEMPERATURA_MAX & "'" & ", " & "'" & HUMEDAD_MIN & "'" & ", " & "'" & HUMEDAD_MAX & "'" & ", " & "'" & COND_AMBIENTALES_OTRAS & "'" & ", " & _
+                    "'" & RANGO_TRABAJO_MIN & "'" & ", " & "'" & RANGO_TRABAJO_MAX & "'" & ", " & "'" & LIMITACIONES_USO & "'" & ", " & PERIODICIDAD_CALIBRACION_ID & ", " & _
+                    "'" & FECHA_PROX_CALIBRACION & "'" & ", " & PERIODICIDAD_VERIFICACION_ID & ", " & "'" & FECHA_PROX_VERIFICACION & "'" & ", " & _
+                    PERIODICIDAD_MANTENIMIENTO_ID & ", " & "'" & FECHA_PROX_MANTENIMIENTO & "'" & ", " & SITUACION_ID & ", " & _
+                    CON_CALIBRACION & ", " & CON_VERIFICACION & ", " & CON_MANTENIMIENTO & ", " & _
+                    TIPO_CALIBRACION_ID & ", " & CALIBRADOR_ID & ", " & CALIBRADOR_INTERNO_ID & ", " & _
+                    "'" & NOTAS & "'" & ", " & REVISADO & ", " & _
+                    "'" & USUARIO.getUSUARIO & "'" & ", CURRENT_TIMESTAMP)"
+        
+        execute_bd consulta
+        Insertar = ID_EQUIPO
+        Exit Function
+        
+fallo:
+        Insertar = 0
+        MsgBox "Error al insertar (clsEquipos)", vbCritical, Err.Description
+End Function
+
+Public Function Modificar(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim consulta As String
+
+        consulta = "UPDATE EQUIPOS SET " & _
+                        " NOMBRE = '" & NOMBRE & "'," & _
+                        " CONDICIONES_AMBIENTALES = " & CONDICIONES_AMBIENTALES & ", " & _
+                        " PROVEEDOR_ID = " & PROVEEDOR_ID & "," & _
+                        " FECHA_RECEPCION = '" & FECHA_RECEPCION & "'," & _
+                        " FECHA_SERVICIO = '" & FECHA_SERVICIO & "'," & _
+                        " SERIE = '" & SERIE & "'," & _
+                        " ALTA_BAJA = " & ALTA_BAJA & "," & _
+                        " NOTAS = '" & NOTAS & "', "
+
+                consulta = consulta & _
+                        " FAMILIA_ID = " & FAMILIA_ID & ", " & _
+                        " MODELO = '" & MODELO & "', " & _
+                        " FABRICANTE = '" & FABRICANTE & "', " & _
+                        " ES_NADCAP = " & ES_NADCAP & ", " & _
+                        " RANGO_MEDIDA_MIN = '" & RANGO_MEDIDA_MIN & "', " & _
+                        " RANGO_MEDIDA_MAX = '" & RANGO_MEDIDA_MAX & "', " & _
+                        " UNIDAD_ID = " & UNIDAD_ID & ", " & _
+                        " TOLERANCIA_MAXIMA = '" & TOLERANCIA_MAXIMA & "', " & _
+                        " INCERTIDUMBRE_MAXIMA = '" & INCERTIDUMBRE_MAXIMA & "', " & _
+                        " PRECISIONN = '" & PRECISIONN & "', " & _
+                        " TEMPERATURA_MIN = '" & TEMPERATURA_MIN & "', " & _
+                        " TEMPERATURA_MAX = '" & TEMPERATURA_MAX & "', " & _
+                        " HUMEDAD_MIN = '" & HUMEDAD_MIN & "', " & _
+                        " HUMEDAD_MAX = '" & HUMEDAD_MAX & "', " & _
+                        " COND_AMBIENTALES_OTRAS = '" & COND_AMBIENTALES_OTRAS & "', " & _
+                        " RANGO_TRABAJO_MIN = '" & RANGO_TRABAJO_MIN & "', " & _
+                        " RANGO_TRABAJO_MAX = '" & RANGO_TRABAJO_MAX & "', " & _
+                        " LIMITACIONES_USO = '" & LIMITACIONES_USO & "', "
+                consulta = consulta & _
+                        " CON_CALIBRACION = " & CON_CALIBRACION & ", " & _
+                        " CON_VERIFICACION = " & CON_VERIFICACION & ", " & _
+                        " CON_MANTENIMIENTO = " & CON_MANTENIMIENTO & ", " & _
+                        " PERIODICIDAD_CALIBRACION_ID = " & PERIODICIDAD_CALIBRACION_ID & ", " & _
+                        " FECHA_PROX_CALIBRACION = '" & FECHA_PROX_CALIBRACION & "', " & _
+                        " PERIODICIDAD_VERIFICACION_ID = " & PERIODICIDAD_VERIFICACION_ID & ", " & _
+                        " FECHA_PROX_VERIFICACION = '" & FECHA_PROX_VERIFICACION & "', " & _
+                        " PERIODICIDAD_MANTENIMIENTO_ID = " & PERIODICIDAD_MANTENIMIENTO_ID & ", " & _
+                        " FECHA_PROX_MANTENIMIENTO = '" & FECHA_PROX_MANTENIMIENTO & "', " & _
+                        " SITUACION_ID = " & SITUACION_ID & ", " & _
+                        " TIPO_CALIBRACION_ID = " & TIPO_CALIBRACION_ID & ", " & _
+                        " CALIBRADOR_ID = " & CALIBRADOR_ID & ", " & _
+                        " CALIBRADOR_INTERNO_ID = " & CALIBRADOR_INTERNO_ID & ", " & _
+                        " REVISADO = " & REVISADO & ", " & _
+                        " CUSERID = '" & USUARIO.getUSUARIO & "', " & _
+                        " FTIMESTP = CURRENT_TIMESTAMP "
+                consulta = consulta & _
+                        " WHERE ID_EQUIPO = " & ID
+        
+        execute_bd consulta
+        Modificar = True
+        Exit Function
+        
+fallo:
+        Modificar = False
+        MsgBox "Error al Modificar (clsEquipos)", vbCritical, Err.Description
+End Function
+
+Public Function Eliminar(ID As Long) As Boolean
+        On Error GoTo fallo
+        Dim consulta As String
+        
+        ' se eliminan calibración, verificación y mantenimiento
+        execute_bd "DELETE FROM EQUIPOS_CALIBRACION WHERE EQUIPO_ID = " & ID
+        execute_bd "DELETE FROM EQUIPOS_VERIFICACION WHERE EQUIPO_ID = " & ID
+        execute_bd "DELETE FROM EQUIPOS_MANTENIMIENTO WHERE EQUIPO_ID = " & ID
+        
+        ' se eliminan los planes de mantenimiento que tenga asignados
+        execute_bd "DELETE FROM EQUIPOS_PLANES_MTO_ASIGNADOS WHERE EQUIPO_ID = " & ID
+        
+        ' se eliminan los documentos, accesorios y normas
+        execute_bd "DELETE FROM EQUIPOS_DOCUMENTACION WHERE EQUIPO_ID = " & ID
+        execute_bd "DELETE FROM EQUIPOS_ACCESORIOS WHERE EQUIPO_ID = " & ID
+        execute_bd "DELETE FROM EQUIPOS_NORMAS WHERE EQUIPO_ID = " & ID
+        
+        ' finalmente se borra el equipo
+        execute_bd "DELETE FROM EQUIPOS WHERE ID_EQUIPO = " & ID
+        Eliminar = True
+        Exit Function
+        
+fallo:
+        Eliminar = False
+        MsgBox "Error al Eliminar (clsEquipos)", vbCritical, Err.Description
+End Function
+
+Public Function Listado(fdes As String, fserie As String, fequipo As String, fnombre As String, ffamilia As String, fsituacion As String, fproveedor As String, baja As Integer, op1 As Integer, op2 As Integer, op3 As Integer, op4 As Integer, opRev0 As Integer, opRev1 As Integer, opRev2 As Integer) As ADODB.RecordSet
+        Dim consulta As String
+        Dim eq As String
+        Dim FILTRO As String
+        Dim strRevision As String
+        
+        If fequipo <> "" And IsNumeric(fequipo) Then
+            eq = " AND A.ID_EQUIPO = " & fequipo
+        End If
+        If op1 <> 0 Then ' Todos
+            FILTRO = ""
+        End If
+        If op2 <> 0 Then ' Calibracion
+            FILTRO = " AND A.CON_CALIBRACION = 1"
+        End If
+        If op3 <> 0 Then  ' Verificacion
+            FILTRO = " AND A.CON_VERIFICACION = 1"
+        End If
+        If op4 <> 0 Then  ' Verificacion
+            FILTRO = " AND A.CON_MANTENIMIENTO = 1"
+        End If
+        
+        If opRev0 <> 0 Then ' todos
+            strRevision = ""
+        End If
+        If opRev1 <> 0 Then ' revisados
+            strRevision = " AND A.REVISADO = 1 "
+        End If
+        If opRev2 <> 0 Then  ' sin revisar
+            strRevision = " AND A.REVISADO = 0 "
+        End If
+        
+        consulta = "SELECT A.ID_EQUIPO, A.NOMBRE, A.SERIE, C.NOMBRE, " & _
+                   "       B.DESCRIPCION, D.DESCRIPCION, E.DESCRIPCION " & _
+                   "  FROM EQUIPOS A, DECODIFICADORA B, PROVEEDORES C, DECODIFICADORA D, DECODIFICADORA E " & _
+                   " WHERE (A.SITUACION_ID = B.VALOR AND B.CODIGO = " & decodificadora.EQ_SITUACIONES & ")" & _
+                   "   AND (A.PROVEEDOR_ID = C.ID_PROVEEDOR) " & _
+                   "   AND (A.FAMILIA_ID = D.VALOR AND D.CODIGO = " & decodificadora.EQ_FAMILIAS & ")" & _
+                   "   AND (A.CONDICIONES_AMBIENTALES = E.VALOR AND E.CODIGO = " & decodificadora.EQ_SINO & ")" & _
+                   "   AND A.SERIE LIKE '%" & fserie & "%' " & _
+                   "   AND A.NOMBRE LIKE '%" & fnombre & "%' " & _
+                   "   AND D.DESCRIPCION LIKE '%" & ffamilia & "%' " & _
+                   "   AND B.DESCRIPCION LIKE '%" & fsituacion & "%' " & _
+                   "   AND C.NOMBRE LIKE '%" & fproveedor & "%' " & _
+                   eq & FILTRO & strRevision & _
+                   "   AND A.ALTA_BAJA = " & CInt(baja) & _
+                   " ORDER BY A.NOMBRE"
+        
+        Set Listado = datos_bd(consulta)
+End Function
+
+Public Function Listado_completo() As ADODB.RecordSet
+        Dim consulta As String
+        
+        consulta = "SELECT A.ID_EQUIPO,A.NOMBRE,A.SERIE,B.DESCRIPCION,A.SITUACION " & _
+                   "  FROM EQUIPOS A, EQUIPOS_PROVEEDORES B " & _
+                   " WHERE A.PROVEEDOR_ID = B.ID_PROVEEDOR " & _
+                   " ORDER BY A.NOMBRE"
+        Set Listado_completo = datos_bd(consulta)
+End Function
+
+Public Function Listado_Combo() As ADODB.RecordSet
+        Dim consulta As String
+        
+        consulta = "SELECT ID_EQUIPO, NOMBRE FROM EQUIPOS ORDER BY NOMBRE"
+        Set Listado_Combo = datos_bd(consulta)
+End Function
+
+Public Function imprimir(EQUIPO As Long) As Boolean
+        With frmReport
+            .iniciar
+            .informe = "\Equipos\rptequipo_ficha"
+            .criterio = "{dec_fam_eq.CODIGO}=" & decodificadora.EQ_FAMILIAS & " and {dec_situaciones_eq.CODIGO}=" & decodificadora.EQ_SITUACIONES & _
+                        " and {dec_sino.CODIGO}=" & decodificadora.EQ_SINO & " and {dec_periodicidad_mto.CODIGO}= " & decodificadora.EQ_periodicidad & _
+                        " and {dec_periodicidad_ver.CODIGO}=" & decodificadora.EQ_periodicidad & " and {dec_periodicidad_cal.CODIGO}= " & decodificadora.EQ_periodicidad & _
+                        " and {dec_sino_esnadcap.CODIGO}=" & decodificadora.EQ_SINO & " and {dec_tipo_calibracion.CODIGO}= " & decodificadora.EQ_TIPO_CALIBRACION & _
+                        " AND {equipos.ID_EQUIPO}=" & EQUIPO
+            
+            .imprimir = False
+            .generar
+            .Visible = True
+        End With
+End Function
+
+Public Function Listado_calibracion_avisos(fdes As String, fserie As String, fequipo As String, fnombre As String, ffamilia As String, fsituacion As String, fproveedor As String, baja As Integer, opRev0 As Integer, opRev1 As Integer, opRev2 As Integer) As ADODB.RecordSet
+        Dim consulta As String
+        Dim eq As String
+        Dim strRevision As String
+        Dim strCondicionEmpleado As String
+        
+        If fequipo <> "" And IsNumeric(fequipo) Then
+            eq = " AND E.ID_EQUIPO = " & fequipo
+        End If
+        
+        If opRev0 <> 0 Then ' todos
+            strRevision = ""
+        End If
+        If opRev1 <> 0 Then ' revisados
+            strRevision = " AND E.REVISADO = 1 "
+        End If
+        If opRev2 <> 0 Then  ' sin revisar
+            strRevision = " AND E.REVISADO = 0 "
+        End If
+        
+        If usuario_logado_ve_externos() Then
+            strCondicionEmpleado = "   AND (EC.CALIBRADOR_INTERNO_ID = " & USUARIO.getID_EMPLEADO & " " & _
+                                   "     OR EC.MODALIDAD_ID = 2) "
+        Else
+            strCondicionEmpleado = "   AND (EC.CALIBRADOR_INTERNO_ID = " & USUARIO.getID_EMPLEADO & ") "
+        End If
+        
+        consulta = "SELECT E.ID_EQUIPO, E.NOMBRE, E.SERIE, PROVEEDORES.NOMBRE " & _
+                   "     , SITUACIONES.DESCRIPCION SITUACION, FAMILIAS.DESCRIPCION FAMILIA, SINO.DESCRIPCION CONDICIONES_AMBIENTALES" & _
+                   "  FROM EQUIPOS E, DECODIFICADORA SITUACIONES, PROVEEDORES " & _
+                   "     , DECODIFICADORA FAMILIAS, DECODIFICADORA SINO " & _
+                   "     , EQUIPOS_CALIBRACION EC " & _
+                   "     , DECODIFICADORA PERIODICIDAD " & _
+                   " WHERE (E.SITUACION_ID = SITUACIONES.VALOR AND SITUACIONES.codigo = " & decodificadora.EQ_SITUACIONES & ") " & _
+                   "   AND (E.PROVEEDOR_ID = PROVEEDORES.ID_PROVEEDOR) " & _
+                   "   AND (E.FAMILIA_ID = FAMILIAS.VALOR AND FAMILIAS.CODIGO = " & decodificadora.EQ_FAMILIAS & ") " & _
+                   "   AND (E.CONDICIONES_AMBIENTALES = SINO.VALOR AND SINO.CODIGO = " & decodificadora.EQ_SINO & ") " & _
+                   "   AND E.NOMBRE LIKE '%" & fnombre & "%' " & _
+                   "   AND E.SERIE LIKE '%" & fserie & "%' " & _
+                   "   AND PROVEEDORES.NOMBRE LIKE '%" & fproveedor & "%' " & _
+                   "   AND SITUACIONES.DESCRIPCION LIKE '%" & fsituacion & "%' " & _
+                   "   AND FAMILIAS.DESCRIPCION LIKE '%" & ffamilia & "%' " & _
+                   "   AND E.ID_EQUIPO = EC.EQUIPO_ID " & _
+                   "   AND E.ALTA_BAJA = " & CInt(baja) & _
+                   eq & strRevision & _
+                   "   AND E.CON_CALIBRACION = 1 " & _
+                   "   AND (EC.PERIODICIDAD_ID = PERIODICIDAD.VALOR AND PERIODICIDAD.CODIGO = " & decodificadora.EQ_periodicidad & ") " & _
+                   "   AND PERIODICIDAD.DESCRIPCION NOT LIKE '%*%' " & _
+                   "   AND EC.FECHA_PROXIMA < '" & Format(Date, "yyyy-mm-dd") & "' " & _
+                   strCondicionEmpleado & _
+                   " ORDER BY E.ID_EQUIPO "
+        
+        Set Listado_calibracion_avisos = datos_bd(consulta)
+End Function
+
+Public Function Listado_verificacion_avisos(fdes As String, fserie As String, fequipo As String, fnombre As String, ffamilia As String, fsituacion As String, fproveedor As String, baja As Integer, opRev0 As Integer, opRev1 As Integer, opRev2 As Integer) As ADODB.RecordSet
+        Dim consulta As String
+        Dim eq As String
+        Dim strRevision As String
+        Dim strCondicionEmpleado As String
+        
+        If fequipo <> "" And IsNumeric(fequipo) Then
+            eq = " AND E.ID_EQUIPO = " & fequipo
+        End If
+        
+        If opRev0 <> 0 Then ' todos
+            strRevision = ""
+        End If
+        If opRev1 <> 0 Then ' revisados
+            strRevision = " AND E.REVISADO = 1 "
+        End If
+        If opRev2 <> 0 Then  ' sin revisar
+            strRevision = " AND E.REVISADO = 0 "
+        End If
+        
+        If usuario_logado_ve_externos() Then
+            strCondicionEmpleado = "   AND (EV.VERIFICADOR_INTERNO_ID = " & USUARIO.getID_EMPLEADO & " " & _
+                                   "     OR EV.MODALIDAD_ID = 2) "
+        Else
+            strCondicionEmpleado = "   AND (EV.VERIFICADOR_INTERNO_ID = " & USUARIO.getID_EMPLEADO & ") "
+        End If
+        
+        consulta = "SELECT E.ID_EQUIPO, E.NOMBRE, E.SERIE, PROVEEDORES.NOMBRE " & _
+                   "     , SITUACIONES.DESCRIPCION SITUACION, FAMILIAS.DESCRIPCION FAMILIA, SINO.DESCRIPCION CONDICIONES_AMBIENTALES " & _
+                   "  FROM EQUIPOS E, DECODIFICADORA SITUACIONES, PROVEEDORES " & _
+                   "     , DECODIFICADORA FAMILIAS, DECODIFICADORA SINO " & _
+                   "     , EQUIPOS_VERIFICACION EV " & _
+                   "     , DECODIFICADORA PERIODICIDAD " & _
+                   " WHERE (E.SITUACION_ID = SITUACIONES.VALOR AND SITUACIONES.codigo = " & decodificadora.EQ_SITUACIONES & ") " & _
+                   "   AND (E.PROVEEDOR_ID = PROVEEDORES.ID_PROVEEDOR) " & _
+                   "   AND (E.FAMILIA_ID = FAMILIAS.VALOR AND FAMILIAS.CODIGO = " & decodificadora.EQ_FAMILIAS & ") " & _
+                   "   AND (E.CONDICIONES_AMBIENTALES = SINO.VALOR AND SINO.CODIGO = " & decodificadora.EQ_SINO & ") " & _
+                   "   AND E.NOMBRE LIKE '%" & fnombre & "%' " & _
+                   "   AND PROVEEDORES.NOMBRE LIKE '%" & fproveedor & "%' " & _
+                   "   AND E.SERIE LIKE '%" & fserie & "%' " & _
+                   "   AND SITUACIONES.DESCRIPCION LIKE '%" & fsituacion & "%' " & _
+                   "   AND FAMILIAS.DESCRIPCION LIKE '%" & ffamilia & "%' " & _
+                   "   AND E.ID_EQUIPO = EV.EQUIPO_ID " & _
+                   "   AND E.ALTA_BAJA = " & CInt(baja) & _
+                   eq & strRevision & _
+                   "   AND E.CON_VERIFICACION = 1 " & _
+                   "   AND (EV.PERIODICIDAD_ID = PERIODICIDAD.VALOR AND PERIODICIDAD.CODIGO = " & decodificadora.EQ_periodicidad & ") " & _
+                   "   AND PERIODICIDAD.DESCRIPCION NOT LIKE '%*%' " & _
+                   "   AND EV.FECHA_PROXIMA < '" & Format(Date, "yyyy-mm-dd") & "' " & _
+                   strCondicionEmpleado & _
+                   "ORDER BY E.ID_EQUIPO "
+        
+        Set Listado_verificacion_avisos = datos_bd(consulta)
+End Function
+
+Public Function Listado_mantenimiento_avisos(fdes As String, fserie As String, fequipo As String, fnombre As String, ffamilia As String, fsituacion As String, fproveedor As String, baja As Integer, opRev0 As Integer, opRev1 As Integer, opRev2 As Integer) As ADODB.RecordSet
+        Dim consulta As String
+        Dim eq As String
+        Dim strRevision As String
+        Dim strCondicionEmpleado As String
+        
+        If fequipo <> "" And IsNumeric(fequipo) Then
+            eq = " AND E.ID_EQUIPO = " & fequipo
+        End If
+        
+        If opRev0 <> 0 Then ' todos
+            strRevision = ""
+        End If
+        If opRev1 <> 0 Then ' revisados
+            strRevision = " AND E.REVISADO = 1 "
+        End If
+        If opRev2 <> 0 Then  ' sin revisar
+            strRevision = " AND E.REVISADO = 0 "
+        End If
+        
+        If usuario_logado_ve_externos() Then
+            strCondicionEmpleado = "   AND ((EM.SEMANAL_MANTENIMIENTO = 1 " & _
+                                   "        AND EM.SEMANAL_FECHA < '" & Format(Date, "yyyy-mm-dd") & "' " & _
+                                   "        AND (EM.SEMANAL_RESPONSABLE_INTERNO_ID = " & USUARIO.getID_EMPLEADO & _
+                                   "               OR EM.SEMANAL_MODALIDAD_ID = 2)) " & _
+                                   "    OR (EM.MENSUAL_MANTENIMIENTO = 1 " & _
+                                   "        AND EM.MENSUAL_FECHA < '" & Format(Date, "yyyy-mm-dd") & "' " & _
+                                   "        AND (EM.MENSUAL_RESPONSABLE_INTERNO_ID = " & USUARIO.getID_EMPLEADO & _
+                                   "               OR EM.MENSUAL_MODALIDAD_ID = 2))) "
+        Else
+            strCondicionEmpleado = "   AND ((EM.SEMANAL_MANTENIMIENTO = 1 " & _
+                                   "        AND EM.SEMANAL_FECHA < '" & Format(Date, "yyyy-mm-dd") & "' " & _
+                                   "        AND EM.SEMANAL_RESPONSABLE_INTERNO_ID = " & USUARIO.getID_EMPLEADO & ") " & _
+                                   "    OR (EM.MENSUAL_MANTENIMIENTO = 1 " & _
+                                   "        AND EM.MENSUAL_FECHA < '" & Format(Date, "yyyy-mm-dd") & "' " & _
+                                   "        AND EM.MENSUAL_RESPONSABLE_INTERNO_ID = " & USUARIO.getID_EMPLEADO & ")) "
+        End If
+        
+        consulta = "SELECT E.ID_EQUIPO, E.NOMBRE, E.SERIE, PROVEEDORES.NOMBRE " & _
+                   "     , SITUACIONES.DESCRIPCION SITUACION, FAMILIAS.DESCRIPCION FAMILIA " & _
+                   "     , SINO.DESCRIPCION CONDICIONES_AMBIENTALES " & _
+                   "  FROM EQUIPOS E, DECODIFICADORA SITUACIONES, PROVEEDORES " & _
+                   "     , DECODIFICADORA FAMILIAS, DECODIFICADORA SINO " & _
+                   "     , EQUIPOS_MANTENIMIENTO EM " & _
+                   " WHERE E.ID_EQUIPO = EM.EQUIPO_ID " & _
+                   "   AND (E.SITUACION_ID = SITUACIONES.VALOR AND SITUACIONES.codigo = " & decodificadora.EQ_SITUACIONES & ") " & _
+                   "   AND (E.PROVEEDOR_ID = PROVEEDORES.ID_PROVEEDOR) " & _
+                   "   AND (E.FAMILIA_ID = FAMILIAS.VALOR AND FAMILIAS.CODIGO = " & decodificadora.EQ_FAMILIAS & ") " & _
+                   "   AND (E.CONDICIONES_AMBIENTALES = SINO.VALOR AND SINO.CODIGO = " & decodificadora.EQ_SINO & ") " & _
+                   "   AND E.ALTA_BAJA = " & CInt(baja) & _
+                   eq & strRevision & _
+                   "   AND E.CON_MANTENIMIENTO = 1 " & _
+                   "   AND PROVEEDORES.NOMBRE LIKE '%" & fproveedor & "%' " & _
+                   "   AND E.NOMBRE LIKE '%" & fnombre & "%' " & _
+                   "   AND E.SERIE LIKE '%" & fserie & "%' " & _
+                   "   AND SITUACIONES.DESCRIPCION LIKE '%" & fsituacion & "%' " & _
+                   "   AND FAMILIAS.DESCRIPCION LIKE '%" & ffamilia & "%' " & _
+                   strCondicionEmpleado & _
+                   " ORDER BY E.ID_EQUIPO "
+        
+        Set Listado_mantenimiento_avisos = datos_bd(consulta)
+End Function
+
+' función que devuelve si el usuario logado está entre los
+' que verán los equipos con cvm externo (se encuentran en parametros)
+Private Function usuario_logado_ve_externos() As Boolean
+    Dim oParametro As New clsParametros
+    Dim strUsuarios() As String
+    Dim i As Long
+    
+    usuario_logado_ve_externos = False
+    
+    oParametro.Carga PARAMETROS.USUARIOS_VEN_EQUIPOS_CVM_EXTERNO, ""
+    strUsuarios = Split(oParametro.getVALOR, ",")
+    For i = 0 To UBound(strUsuarios)
+        If USUARIO.getID_EMPLEADO = Trim(strUsuarios(i)) Then
+            usuario_logado_ve_externos = True
+        End If
+    Next i
+    
+    Set oParametro = Nothing
+End Function
+Public Function llenar_combo(combo As miCombo, FK As Long, FORMULARIO As Form, FILTRO As String)
+    With combo
+        .setFK_CAMPO = ""
+        .setFK_VALOR = FK
+        .setTABLA = "EQUIPOS"
+        .setDESCRIPCION = "Equipos"
+        .setPK = "ID_EQUIPO"
+        .setCAMPO = "concat(Nombre,' (Nº ',CAST(ID_EQUIPO AS CHAR),')')"
+        .setMUESTRA_DETALLE = True
+        .setFILTRO = " ALTA_BAJA=0 "
+        Set .FORMULARIO = FORMULARIO
+    End With
+End Function
+

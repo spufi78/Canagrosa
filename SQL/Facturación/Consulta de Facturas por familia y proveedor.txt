@@ -1,0 +1,9 @@
+select c.ID_PROVEEDOR, c.NOMBRE, d.NOMBRE ,sum(b.BI) 
+  From proveedores_facturas a, proveedores_facturas_fam b, proveedores c, familias d
+ where a.ID = b.FACTURA_ID 
+  and a.PROVEEDOR_ID = c.ID_PROVEEDOR 
+  and b.FAMILIA_ID = d.ID_FAMILIA 
+--  and c.NOMBRE like '%WR%'
+  and year(a.FECHA) = 2014
+  
+group by c.ID_PROVEEDOR,c.NOMBRE, b.FAMILIA_ID

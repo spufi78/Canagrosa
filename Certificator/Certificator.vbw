@@ -1,0 +1,15 @@
+frmMain = 110, 110, 862, 552, , 44, 44, 796, 486, C
+Ini = 0, 0, 0, 0, C
+bd_documentacion = 264, 264, 1477, 908, C
+MataProcesos = 198, 198, 1411, 842, C
+clsCertificator = 176, 176, 1348, 685, 
+clsCertificator_vida = 220, 220, 1392, 729, C
+Correo = 132, 132, 1304, 641, C
+bd_metrologia = 198, 198, 1370, 707, 
+log_metrologia = 198, 198, 1370, 707, C
+clsEquipos_plantillas = 66, 66, 1238, 575, 
+globales = 176, 176, 1346, 685, Z
+clsDocumentacion = 220, 220, 1390, 729, C
+clsEquipos = 220, 220, 1390, 729, C
+clsEq_calibracion_equipos = 242, 242, 1165, 729, C
+clsMuestras = 220, 220, 1143, 707, C
